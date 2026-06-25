@@ -72,8 +72,12 @@ document.querySelectorAll('.js-reveal').forEach((el) => revealObserver.observe(e
   const btn = document.querySelector('.fv__btn');
   const progress = document.querySelector('.fv__progress');
   if (!btn || !progress) return;
+  let frameId;
   const update = () => {
-    btn.style.bottom = (progress.offsetHeight + 12) + 'px';
+    cancelAnimationFrame(frameId);
+    frameId = requestAnimationFrame(() => {
+      btn.style.bottom = (progress.offsetHeight + 12) + 'px';
+    });
   };
   window.addEventListener('load', update);
   window.addEventListener('resize', update);
@@ -107,14 +111,17 @@ if (progressFill) progressObserver.observe(progressFill.closest('.fv__progress')
 /* ===========================
    FAQ ACCORDION
 =========================== */
-document.querySelectorAll('.faq-q').forEach((btn) => {
+const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+faqItems.forEach((item) => {
+  const btn = item.querySelector('.faq-q');
+  const answer = item.querySelector('.faq-a');
+  if (!btn || !answer) return;
+
   btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const answer = item.querySelector('.faq-a');
     const isOpen = item.classList.contains('is-open');
 
-    // Close all
-    document.querySelectorAll('.faq-item.is-open').forEach((openItem) => {
+    faqItems.forEach((openItem) => {
+      if (!openItem.classList.contains('is-open')) return;
       openItem.classList.remove('is-open');
       openItem.querySelector('.faq-a').style.maxHeight = '0';
       openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
@@ -133,24 +140,26 @@ document.querySelectorAll('.faq-q').forEach((btn) => {
 /* ===========================
    CTA BUTTON FLOAT EFFECT
 =========================== */
-document.querySelectorAll('.fv__btn, .final-cta__btn, .mid-cta__btn').forEach((btn) => {
-  let frameId;
-  const handleMove = (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-    cancelAnimationFrame(frameId);
-    frameId = requestAnimationFrame(() => {
-      btn.style.transform = `translate(${x * 4}px, ${y * 4 - 3}px)`;
-    });
-  };
-  const handleLeave = () => {
-    cancelAnimationFrame(frameId);
-    btn.style.transform = '';
-  };
-  btn.addEventListener('mousemove', handleMove);
-  btn.addEventListener('mouseleave', handleLeave);
-});
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.fv__btn, .final-cta__btn, .mid-cta__btn').forEach((btn) => {
+    let frameId;
+    const handleMove = (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        btn.style.transform = `translate(${x * 4}px, ${y * 4 - 3}px)`;
+      });
+    };
+    const handleLeave = () => {
+      cancelAnimationFrame(frameId);
+      btn.style.transform = '';
+    };
+    btn.addEventListener('mousemove', handleMove);
+    btn.addEventListener('mouseleave', handleLeave);
+  });
+}
 
 /* ===========================
    SMOOTH ANCHOR SCROLL
@@ -195,45 +204,53 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
 
   const originals = Array.from(track.children);
   const TOTAL = originals.length;
-  const CARD_WIDTH = 200;
-  const GAP = 12;
-  const STEP = CARD_WIDTH + GAP;
+  if (TOTAL < 2) return;
 
-  // 末尾に全カードを複製（5→10枚）してシームレスループを実現
+  // DOM: [last_pre, 1, 2, 3, 4, 5, 1', 2', 3', 4', 5']
+  // 1枚目を中央に置き、左右に前後のカードが少し見える状態から始める。
+  track.insertBefore(originals[TOTAL - 1].cloneNode(true), track.firstChild);
   originals.forEach((card) => track.appendChild(card.cloneNode(true)));
 
-  let current = 0;
+  const PREPEND = 1;
+  let current = PREPEND;
   let isAnimating = false;
   let isPaused = false;
   let timer;
 
-  function smoothScrollTo(index) {
-    track.style.scrollBehavior = 'smooth';
-    track.scrollLeft = index * STEP;
+  function getCenteredScroll(index) {
+    const card = track.children[index];
+    return card.offsetLeft - ((track.clientWidth - card.offsetWidth) / 2);
   }
 
-  function instantScrollTo(index) {
-    // scroll-snap を一瞬無効化して瞬間ジャンプ
-    track.style.scrollSnapType = 'none';
-    track.style.scrollBehavior = 'auto';
-    track.scrollLeft = index * STEP;
-    // reflow を強制してから元に戻す
-    void track.offsetWidth;
-    track.style.scrollSnapType = '';
-    track.style.scrollBehavior = '';
+  function scrollTo(index, smooth) {
+    const pos = getCenteredScroll(index);
+    if (smooth) {
+      track.style.scrollBehavior = 'smooth';
+      track.scrollLeft = pos;
+    } else {
+      track.style.scrollSnapType = 'none';
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = pos;
+      void track.offsetWidth;
+      track.style.scrollSnapType = '';
+      track.style.scrollBehavior = '';
+    }
+  }
+
+  function setInitialPosition() {
+    scrollTo(current, false);
   }
 
   function next() {
     if (isAnimating || isPaused) return;
     isAnimating = true;
     current++;
-    smoothScrollTo(current);
+    scrollTo(current, true);
 
     setTimeout(() => {
-      // 複製領域（index >= TOTAL）まで来たら先頭へ瞬間リセット
-      if (current >= TOTAL) {
-        current = 0;
-        instantScrollTo(0);
+      if (current >= PREPEND + TOTAL) {
+        current = PREPEND;
+        scrollTo(current, false);
       }
       isAnimating = false;
     }, 420);
@@ -246,6 +263,83 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
 
   track.addEventListener('touchstart', () => { isPaused = true; clearInterval(timer); }, { passive: true });
   track.addEventListener('touchend', () => { isPaused = false; startTimer(); });
+  window.addEventListener('resize', setInitialPosition);
 
+  setInitialPosition();
+  startTimer();
+})();
+
+/* ===========================
+   VOICES AUTO SLIDER
+=========================== */
+(function voicesSlider() {
+  const track = document.querySelector('.voices-track');
+  if (!track) return;
+
+  const originals = Array.from(track.children);
+  const TOTAL = originals.length;
+  if (TOTAL < 2) return;
+
+  // DOM: [C_pre, A, B, C, A', B', C']
+  // Aを中央に置き、左右にC/Bが少し見える状態から始める。
+  track.insertBefore(originals[TOTAL - 1].cloneNode(true), track.firstChild);
+  originals.forEach((card) => track.appendChild(card.cloneNode(true)));
+
+  const PREPEND = 1;
+  let current = PREPEND;
+
+  let isAnimating = false;
+  let isPaused = false;
+  let timer;
+
+  function getCenteredScroll(index) {
+    const card = track.children[index];
+    return card.offsetLeft - ((track.clientWidth - card.offsetWidth) / 2);
+  }
+
+  function scrollTo(index, smooth) {
+    const pos = getCenteredScroll(index);
+    if (smooth) {
+      track.style.scrollBehavior = 'smooth';
+      track.scrollLeft = pos;
+    } else {
+      track.style.scrollSnapType = 'none';
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = pos;
+      void track.offsetWidth;
+      track.style.scrollSnapType = '';
+      track.style.scrollBehavior = '';
+    }
+  }
+
+  function setInitialPosition() {
+    scrollTo(current, false);
+  }
+
+  function next() {
+    if (isAnimating || isPaused) return;
+    isAnimating = true;
+    current++;
+    scrollTo(current, true);
+
+    setTimeout(() => {
+      if (current >= PREPEND + TOTAL) {
+        current = PREPEND;
+        scrollTo(current, false);
+      }
+      isAnimating = false;
+    }, 420);
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 3500);
+  }
+
+  track.addEventListener('touchstart', () => { isPaused = true; clearInterval(timer); }, { passive: true });
+  track.addEventListener('touchend', () => { isPaused = false; startTimer(); });
+  window.addEventListener('resize', setInitialPosition);
+
+  setInitialPosition();
   startTimer();
 })();

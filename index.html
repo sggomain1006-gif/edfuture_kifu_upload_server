@@ -14,9 +14,9 @@
   <!-- S1: FV -->
   <section class="fv" id="fv">
     <div class="fv__bg">
-      <img src="images/1_fv.jpg" alt="挑戦する高校生たち" class="fv__bg-img">
+      <img src="images/1_fv.jpg" alt="挑戦する高校生たち" class="fv__bg-img" decoding="async" fetchpriority="high">
       <div class="fv__overlay"></div>
-      <img src="images/1_fv_kirinuki.png" alt="" class="fv__kirinuki">
+      <img src="images/1_fv_kirinuki.png" alt="" class="fv__kirinuki" decoding="async" fetchpriority="high">
     </div>
     <div class="fv__copy">
       <h1 class="fv__title">挑戦は、<br>次の挑戦へ。</h1>
@@ -37,51 +37,35 @@
   </section>
 
   <!-- CINEMATIC INTRO -->
-  <div class="cinematic-intro">
-    <p class="cinematic-intro__line js-reveal">ある高校生の話をします。</p>
-  </div>
-
   <!-- S2: BEFORE -->
   <section class="story story--before" id="story-before">
-    <div class="story__photo story__photo--before">
-      <div class="placeholder" data-label="高校生・地方の日常写真"></div>
-    </div>
-    <div class="story__lines">
-      <p class="story__line js-reveal">岩手県の、小さな町。</p>
-      <p class="story__line js-reveal">地方の公立高校に通う、ある高校生。</p>
-      <p class="story__line js-reveal">家計に余裕はなかった。</p>
-      <p class="story__line js-reveal">周りに海外経験のある人もいなかった。</p>
+    <div class="story__photo story__photo--before" style="height:auto;">
+      <video src="images/09.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;"></video>
     </div>
     <div class="story__quote js-reveal">
-      <blockquote>「海外なんて、<br>自分には関係ないと<br>思っていました。」</blockquote>
+      <blockquote>「アメリカに漠然とした憧れがありました。」</blockquote>
     </div>
 
   </section>
 
   <!-- S3: DURING -->
   <section class="story story--during" id="story-during">
-    <div class="story__lines">
-      <p class="story__line js-reveal">EdFutureのプログラムで、</p>
-      <p class="story__line js-reveal">初めてパスポートを取得した。</p>
-      <p class="story__line js-reveal">初めて飛行機に乗った。</p>
-      <p class="story__line story__line--big js-reveal">初めて、海外へ。</p>
-    </div>
     <div class="story__moments">
       <div class="story__moment js-reveal">
-        <img src="images/DSC_0003.jpg" alt="留学中の様子" class="story__moment-img">
-        <p class="story__moment-caption">空港で、手が震えた。</p>
-      </div>
-      <div class="story__moment story__moment--r js-reveal">
-        <img src="images/DSC_5230.jpg" alt="現地での交流" class="story__moment-img">
-        <p class="story__moment-caption">英語が通じなくて、悔しかった。</p>
+        <video src="images/08.mp4" class="story__moment-img" autoplay muted loop playsinline></video>
+        <p class="story__moment-caption">空港で本場のファストフードに思いを馳せた。</p>
       </div>
       <div class="story__moment js-reveal">
-        <img src="images/DSC_7768.jpg" alt="仲間との時間" class="story__moment-img">
-        <p class="story__moment-caption">ホームステイ先で、泣いた夜もあった。</p>
+        <video src="images/04.mp4" class="story__moment-img" autoplay muted loop playsinline></video>
+        <p class="story__moment-caption">はっきりと物事を言って初めて伝わると知り、ここでは全て自分の行動次第なのだと気づいた。</p>
       </div>
-      <div class="story__moment story__moment--r js-reveal">
-        <img src="images/DSC_9591.jpg" alt="最終日の様子" class="story__moment-img">
-        <p class="story__moment-caption">最終日、夢を英語で話した。</p>
+      <div class="story__moment js-reveal">
+        <video src="images/01.mp4" class="story__moment-img" autoplay muted loop playsinline style="filter: brightness(1.25)"></video>
+        <p class="story__moment-caption">アンケートの回答数を見て、初めて自信がついた。興味分野である探求の面白さを知った。</p>
+      </div>
+      <div class="story__moment js-reveal">
+        <video src="images/10.mp4" class="story__moment-img" autoplay muted loop playsinline></video>
+        <p class="story__moment-caption">最終日、互いに涙してバディと感謝を伝えあった。</p>
       </div>
     </div>
     <div class="story__quote js-reveal">
@@ -114,83 +98,7 @@
       <p class="section-sub">寄付は支援ではなく、<br>この循環に加わる「参加」です。</p>
     </div>
     <div class="cycle-diagram js-reveal">
-      <svg class="cycle-svg" viewBox="-340 -340 680 680" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="gCenter" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#8B4A53"/>
-            <stop offset="100%" stop-color="#5c2d33"/>
-          </radialGradient>
-          <radialGradient id="gParticipant" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#1a2e22"/>
-            <stop offset="100%" stop-color="#0d1a14"/>
-          </radialGradient>
-          <radialGradient id="gStaff" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#141828"/>
-            <stop offset="100%" stop-color="#0d0f1a"/>
-          </radialGradient>
-          <radialGradient id="gFP" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#1e1708"/>
-            <stop offset="100%" stop-color="#120f05"/>
-          </radialGradient>
-          <filter id="fGlowCenter" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="10" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="fGlowGold" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="7" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="fGlowGreen" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="5" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="fGlowBlue" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="5" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <clipPath id="clipCenter">
-            <circle cx="0" cy="0" r="75"/>
-          </clipPath>
-          <clipPath id="clipParticipant">
-            <circle cx="0" cy="0" r="108"/>
-          </clipPath>
-          <clipPath id="clipStaff">
-            <circle cx="0" cy="0" r="108"/>
-          </clipPath>
-          <linearGradient id="gradPhotoOverlay" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
-            <stop offset="0%"   stop-color="black" stop-opacity="0"/>
-            <stop offset="52%"  stop-color="black" stop-opacity="0"/>
-            <stop offset="100%" stop-color="black" stop-opacity="0.62"/>
-          </linearGradient>
-        </defs>
-        <circle cx="0" cy="0" r="250" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-        <circle cx="0" cy="0" r="215" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="60" opacity="0.4"/>
-        <circle cx="0" cy="0" r="215" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="6,6"/>
-        <ellipse cx="0" cy="-215" rx="116" ry="70" fill="rgba(201,168,76,0.08)" filter="url(#fGlowGold)"/>
-        <ellipse cx="0" cy="-215" rx="110" ry="66" fill="url(#gFP)" stroke="#C9A84C" stroke-width="2"/>
-        <text x="0" y="-233" text-anchor="middle" fill="#C9A84C" font-size="9.5" font-weight="bold" letter-spacing="2">FOUNDING PARTNERS</text>
-        <text x="0" y="-207" text-anchor="middle" fill="#e8c96a" font-size="22" font-weight="bold">100</text>
-        <circle cx="186" cy="107" r="123" fill="rgba(90,170,128,0.06)" filter="url(#fGlowGreen)"/>
-        <g transform="translate(186,107)">
-          <image href="images/sankasha.jpg" x="-108" y="-108" width="216" height="216" clip-path="url(#clipParticipant)" preserveAspectRatio="xMidYMin slice"/>
-          <circle cx="0" cy="0" r="108" fill="url(#gradPhotoOverlay)"/>
-          <circle cx="0" cy="0" r="108" fill="none" stroke="#5aaa80" stroke-width="2"/>
-        </g>
-        <text x="186" y="108" text-anchor="middle" fill="#7ecca0" font-size="15" font-weight="bold">参加者</text>
-        <text x="186" y="124" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9">世界に挑戦する</text>
-        <circle cx="-186" cy="107" r="123" fill="rgba(100,120,200,0.05)" filter="url(#fGlowBlue)"/>
-        <g transform="translate(-186,107)">
-          <image href="images/staff.jpg" x="-108" y="-108" width="216" height="216" clip-path="url(#clipStaff)" preserveAspectRatio="xMidYMin slice"/>
-          <circle cx="0" cy="0" r="108" fill="url(#gradPhotoOverlay)"/>
-          <circle cx="0" cy="0" r="108" fill="none" stroke="#6677bb" stroke-width="2"/>
-        </g>
-        <text x="-186" y="108" text-anchor="middle" fill="#8899cc" font-size="15" font-weight="bold">スタッフ</text>
-        <text x="-186" y="124" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9">次の世代を導く</text>
-        <circle cx="0" cy="0" r="92" fill="rgba(109,59,66,0.25)" filter="url(#fGlowCenter)"/>
-        <circle cx="0" cy="0" r="76" fill="#ffffff"/>
-        <image href="images/rogo.webp" x="-75" y="-75" width="150" height="150" clip-path="url(#clipCenter)" preserveAspectRatio="xMidYMid meet"/>
-        <circle cx="0" cy="0" r="76" fill="none" stroke="rgba(109,59,66,0.6)" stroke-width="2"/>
-      </svg>
+      <img src="images/junkan.png" alt="挑戦の循環図" loading="lazy" decoding="async">
     </div>
   </section>
 
@@ -205,27 +113,31 @@
     <div class="issue-cards">
 
       <div class="issue-card js-reveal">
+        <span class="issue-card__label">貧困</span>
         <h3 class="issue-card__headline"><em>7人に1人</em>の子どもが<br>相対的貧困の状態にある</h3>
-        <img src="images/kakusa1.png" alt="7人に1人が貧困" class="issue-card__img">
+        <img src="images/kakusa1.png" alt="7人に1人が貧困" class="issue-card__img" loading="lazy" decoding="async">
         <p class="issue-card__text">日本の子どもの貧困率は約14%。学びや体験の機会に大きな制限があり、挑戦へのスタートラインに立てない子どもが数多くいます。</p>
       </div>
 
       <div class="issue-card js-reveal">
+        <span class="issue-card__label">格差</span>
         <h3 class="issue-card__headline">学習費に<em>約2.6倍</em>の<br>格差が生まれている</h3>
-        <img src="images/kakusa2.png" alt="学習費の格差" class="issue-card__img">
+        <img src="images/kakusa2.png" alt="学習費の格差" class="issue-card__img" loading="lazy" decoding="async">
         <p class="issue-card__text">世帯年収1,200万以上の家庭では年間21.8万円、400万以上の家庭では8.3万円。収入の差が、子どもの体験の差に直結しています。</p>
         <p class="issue-card__source">参考：H30年度子供の学習費調査（文部科学省）</p>
       </div>
 
       <div class="issue-card js-reveal">
+        <span class="issue-card__label">体験</span>
         <h3 class="issue-card__headline">低所得世帯の子どもの<em>29%</em>が<br>学校外体験ゼロ</h3>
-        <img src="images/kakusa4.png" alt="体験格差29%" class="issue-card__img">
+        <img src="images/kakusa4.png" alt="体験格差29%" class="issue-card__img" loading="lazy" decoding="async">
         <p class="issue-card__text">直近1年で学校外の体験活動をしていない子どもの割合。世帯収入300万円未満では約3人に1人が、体験の機会を持てていません。</p>
       </div>
 
       <div class="issue-card js-reveal">
+        <span class="issue-card__label">機会</span>
         <h3 class="issue-card__headline">海外体験が<em>入試を左右</em>する<br>時代が来ている</h3>
-        <img src="images/kakusa3.png" alt="留学生数の推移" class="issue-card__img">
+        <img src="images/kakusa3.png" alt="留学生数の推移" class="issue-card__img" loading="lazy" decoding="async">
         <p class="issue-card__text">留学経験がAO入試を有利にする一方、地方・低所得家庭の高校生に海外留学は遠い夢のまま。機会の差が、未来の差になっています。</p>
       </div>
 
@@ -284,6 +196,12 @@
       <p class="section-label">変化した若者たち</p>
       <h2 class="section-title section-title--dark">これまでに<strong>104人</strong>の<br>若者と出会ってきました</h2>
     </div>
+    <div class="story-photos">
+      <img src="images/01.webp" alt="" loading="lazy">
+      <img src="images/02.webp" alt="" loading="lazy">
+      <img src="images/03.webp" alt="" loading="lazy">
+      <img src="images/04.webp" alt="" loading="lazy">
+    </div>
     <div class="mini-stories">
       <article class="mini-story js-reveal">
         <div class="placeholder placeholder--sm" data-label="参加者写真"></div>
@@ -329,7 +247,7 @@
     </div>
     <div class="founder-card js-reveal">
       <div class="founder-card__photo-wrap">
-        <img src="images/daihyo.webp" alt="中村柾" class="founder-card__photo">
+        <img src="images/daihyo.webp" alt="中村柾" class="founder-card__photo" loading="lazy" decoding="async">
       </div>
       <div class="founder-card__overlay"></div>
       <div class="founder-card__content">
@@ -353,43 +271,59 @@
       <h3 class="core-members__title">コアメンバー</h3>
       <div class="core-members__track">
         <div class="core-member">
-          <div class="core-member__photo" style="background-image:url('images/DSC_5230.jpg')"></div>
+          <div class="core-member__photo" style="background-image:url('images/yuma.webp')"></div>
           <div class="core-member__body">
-            <p class="core-member__name">Yumaさん</p>
-            <p class="core-member__role">プログラムディレクター</p>
+            <p class="core-member__name">徳永悠馬</p>
+            <p class="core-member__role">アイルランドプロジェクトマネージャー</p>
+            <div class="core-member__tags">
+              <span>Global Shapers Yokohama</span>
+              <span>元幼稚園職員</span>
+            </div>
             <p class="core-member__msg">「挑戦する場をつくり続けたい」</p>
           </div>
         </div>
         <div class="core-member">
-          <div class="core-member__photo" style="background-image:url('images/DSC_9591.jpg')"></div>
+          <div class="core-member__photo" style="background-image:url('images/misako.webp'); background-position: center -15px"></div>
           <div class="core-member__body">
-            <p class="core-member__name">えびちゃん</p>
-            <p class="core-member__role">コミュニティマネージャー</p>
+            <p class="core-member__name">楠美沙子</p>
+            <p class="core-member__role">ボストン②プロジェクトマネージャー</p>
+            <div class="core-member__tags">
+              <span>元小学校教員</span>
+              <span>オーストラリア在住</span>
+            </div>
             <p class="core-member__msg">「全員が主役の場をつくりたい」</p>
           </div>
         </div>
         <div class="core-member">
-          <div class="core-member__photo" style="background-image:url('images/staff.JPG')"></div>
+          <div class="core-member__photo" style="background-image:url('images/kazuki.webp')"></div>
           <div class="core-member__body">
-            <p class="core-member__name">ひらしん</p>
-            <p class="core-member__role">学生スタッフリーダー</p>
+            <p class="core-member__name">堀佳月</p>
+            <p class="core-member__role">SFプロジェクトマネージャー</p>
             <p class="core-member__msg">「次の世代に繋いでいきたい」</p>
           </div>
         </div>
         <div class="core-member">
-          <div class="core-member__photo" style="background-image:url('images/DSC_7768.jpg')"></div>
+          <div class="core-member__photo" style="background-image:url('images/nanako.webp')"></div>
           <div class="core-member__body">
-            <p class="core-member__name">メンバー4</p>
-            <p class="core-member__role">ファンドレイザー</p>
+            <p class="core-member__name">加藤菜々子</p>
+            <p class="core-member__role">ボストン①プロジェクトマネージャー</p>
             <p class="core-member__msg">「想いをカタチにしたい」</p>
           </div>
         </div>
         <div class="core-member">
-          <div class="core-member__photo" style="background-image:url('images/DSC_0003.jpg')"></div>
+          <div class="core-member__photo" style="background-image:url('images/mariko.webp')"></div>
           <div class="core-member__body">
-            <p class="core-member__name">メンバー5</p>
-            <p class="core-member__role">広報・デザイン</p>
+            <p class="core-member__name">中島真理子</p>
+            <p class="core-member__role">大学生スタッフ</p>
             <p class="core-member__msg">「届けたい人に届けたい」</p>
+          </div>
+        </div>
+        <div class="core-member">
+          <div class="core-member__photo"></div>
+          <div class="core-member__body">
+            <p class="core-member__name">和田一之介</p>
+            <p class="core-member__role">大学生スタッフ</p>
+            <p class="core-member__msg">「」</p>
           </div>
         </div>
       </div>
@@ -420,11 +354,11 @@
       <h3 class="endorsements__title">後援</h3>
       <div class="endorsements__grid">
         <div class="endorsements__row">
-          <img src="images/9_koen1.png" alt="文部科学省" class="endorsement-logo endorsement-logo--mext">
-          <img src="images/9_koen2.png" alt="Education in Ireland" class="endorsement-logo endorsement-logo--ireland">
+          <img src="images/9_koen1.png" alt="文部科学省" class="endorsement-logo endorsement-logo--mext" loading="lazy" decoding="async">
+          <img src="images/9_koen2.png" alt="Education in Ireland" class="endorsement-logo endorsement-logo--ireland" loading="lazy" decoding="async">
         </div>
         <div class="endorsements__row">
-          <img src="images/9_koen3.png" alt="the japan times" class="endorsement-logo endorsement-logo--jt">
+          <img src="images/9_koen3.png" alt="the japan times" class="endorsement-logo endorsement-logo--jt" loading="lazy" decoding="async">
           <ul class="endorsements__names">
             <li>アメリカ大使館</li>
             <li>在アイルランド日本国大使館</li>
@@ -436,14 +370,14 @@
     <div class="media-section js-reveal">
       <h3 class="media-section__title">メディア掲載</h3>
       <div class="media-grid">
-        <img src="images/9_media1.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media2.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media3.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media4.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media5.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media6.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media7.png" alt="メディア掲載" class="media-logo">
-        <img src="images/9_media8.png" alt="メディア掲載" class="media-logo">
+        <img src="images/9_media1.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media2.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media3.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media4.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media5.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media6.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media7.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media8.png" alt="メディア掲載" class="media-logo" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -454,9 +388,9 @@
       <p class="section-label section-label--dark">Voices</p>
       <h2 class="section-title section-title--dark">参加者からの<br>メッセージ</h2>
     </div>
-    <div class="voices-track">
+    <div class="voices-track js-reveal">
 
-      <div class="voice-card js-reveal">
+      <div class="voice-card">
         <div class="voice-card__photo" style="background-image:url('images/sankasha.jpg'); background-position: center top;"></div>
         <div class="voice-card__body">
           <p class="voice-card__program">ワールド寺子屋 2026 / ニューヨーク</p>
@@ -465,7 +399,7 @@
         </div>
       </div>
 
-      <div class="voice-card js-reveal">
+      <div class="voice-card">
         <div class="voice-card__photo" style="background-image:url('images/DSC_7768.jpg'); background-position: center 20%;"></div>
         <div class="voice-card__body">
           <p class="voice-card__program">グローバルプロジェクト 2026 / ロサンゼルス</p>
@@ -474,7 +408,7 @@
         </div>
       </div>
 
-      <div class="voice-card js-reveal">
+      <div class="voice-card">
         <div class="voice-card__photo" style="background-image:url('images/DSC_5230.jpg'); background-position: center 30%;"></div>
         <div class="voice-card__body">
           <p class="voice-card__program">アイルランドプログラム 2025</p>
@@ -490,7 +424,7 @@
   <section class="impact-section" id="impact">
 
     <div class="impact-hero js-reveal">
-      <img src="images/DSC_7768.jpg" alt="プログラム参加者" class="impact-hero__img">
+      <img src="images/DSC_7768.jpg" alt="プログラム参加者" class="impact-hero__img" loading="lazy" decoding="async">
       <div class="impact-hero__overlay"></div>
       <div class="impact-hero__text">
         <p class="impact-hero__label">次の挑戦者を迎えたい</p>
@@ -550,14 +484,14 @@
     </div>
     <div class="testimonials">
       <div class="testimonial js-reveal">
-        <div class="placeholder placeholder--avatar" data-label="写真"></div>
+        <img src="images/kifusha01.webp" alt="" class="testimonial__avatar" loading="lazy">
         <div class="testimonial__body">
           <p class="testimonial__role">保護者・新潟県・50代</p>
           <p class="testimonial__text">「息子が帰国したとき、別人のように目が輝いていました。あの経験を、次の子にも届けたい。その一心で支援を始めました。」</p>
         </div>
       </div>
       <div class="testimonial testimonial--featured js-reveal">
-        <div class="placeholder placeholder--avatar" data-label="写真"></div>
+        <img src="images/kifusha02.webp" alt="" class="testimonial__avatar" loading="lazy">
         <div class="testimonial__body">
           <p class="testimonial__role">公立高校教員・沖縄県</p>
           <p class="testimonial__name">泉川さん</p>
@@ -566,7 +500,7 @@
       </div>
 
       <div class="testimonial testimonial--featured js-reveal">
-        <div class="placeholder placeholder--avatar" data-label="写真"></div>
+        <img src="images/kifusha03.webp" alt="" class="testimonial__avatar" loading="lazy">
         <div class="testimonial__body">
           <p class="testimonial__role">ワールド寺子屋 卒業生・大学生</p>
           <p class="testimonial__name">吉田さん</p>
@@ -715,7 +649,7 @@
   <!-- S16: RE-IGNITION -->
   <section class="reignition-section" id="reignition">
     <div class="reignition-bg">
-      <img src="images/DSC_9591.jpg" alt="" class="reignition-bg-img">
+      <img src="images/DSC_9591.jpg" alt="" class="reignition-bg-img" loading="lazy" decoding="async">
       <div class="reignition-overlay"></div>
     </div>
     <div class="reignition-content js-reveal">
@@ -728,7 +662,7 @@
   <!-- S17: FINAL CTA -->
   <section class="final-cta" id="cta-main">
     <div class="final-cta__bg">
-      <img src="images/DSC_7768.jpg" alt="" class="final-cta__bg-img">
+      <img src="images/DSC_7768.jpg" alt="" class="final-cta__bg-img" loading="lazy" decoding="async">
       <div class="final-cta__overlay"></div>
     </div>
     <div class="final-cta__content js-reveal">
@@ -766,7 +700,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-header">
-      <img src="images/rogo.webp" alt="EdFuture ロゴ" class="footer-logo">
+      <img src="images/rogo.webp" alt="EdFuture ロゴ" class="footer-logo" loading="lazy" decoding="async">
       <div class="footer-brand">NPO法人 EdFuture</div>
     </div>
     <div class="footer-contact">
