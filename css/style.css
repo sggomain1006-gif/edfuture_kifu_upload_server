@@ -1071,6 +1071,73 @@ strong { font-weight: 700; }
 }
 
 /* ===========================
+   S4.5: IMPACT SHORT
+=========================== */
+.impact-short {
+  background: var(--c-bg);
+  padding: 56px var(--pad) 72px;
+  text-align: center;
+}
+.impact-short__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+.impact-short__card {
+  background: var(--c-white);
+  border: 1.5px solid #e8e0d8;
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+.impact-short__card--featured {
+  border-color: var(--c-primary);
+  background: #fff8f8;
+}
+.impact-short__amount {
+  font-size: 15px;
+  color: var(--c-text-light);
+  margin-bottom: 8px;
+}
+.impact-short__amount strong {
+  font-size: 28px;
+  color: var(--c-primary);
+  font-weight: 900;
+}
+.impact-short__card--featured .impact-short__amount strong {
+  color: var(--c-primary);
+}
+.impact-short__result {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--c-text);
+  font-weight: 600;
+}
+.impact-short__cta {
+  margin-top: 36px;
+  margin-bottom: 16px;
+}
+.impact-short__btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--c-primary);
+  color: var(--c-white);
+  border-radius: 50px;
+  padding: 16px 36px;
+  text-decoration: none;
+  gap: 4px;
+}
+.impact-short__btn-sub {
+  font-size: 11px;
+  opacity: 0.8;
+}
+.impact-short__btn-main {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+/* ===========================
    S11: MID CTA
 =========================== */
 .mid-cta {
@@ -1136,8 +1203,11 @@ strong { font-weight: 700; }
 .benefits-section { background: var(--c-bg-light); padding-bottom: 56px; }
 .benefits-section .section-head { background: var(--c-bg-light); }
 .benefits-list { padding: 0 var(--px); display: flex; flex-direction: column; gap: 40px; }
-.benefit-card { display: flex; flex-direction: column; gap: 16px; }
+.benefit-card { display: flex; flex-direction: column; gap: 12px; }
 .benefit-card__head { display: flex; align-items: center; gap: 14px; }
+.benefit-card__bottom { display: flex; flex-direction: row; align-items: center; gap: 16px; }
+.benefit-card__bottom--reverse { flex-direction: row-reverse; }
+.benefit-card__desc { flex: 1; font-size: 13px; color: var(--c-text-mid); line-height: 1.8; }
 .benefit-card__badge {
   flex-shrink: 0;
   width: 52px; height: 52px;
@@ -1153,19 +1223,39 @@ strong { font-weight: 700; }
 .benefit-card__title {
   font-size: 18px; font-weight: 700; color: var(--c-text); line-height: 1.45;
 }
-.benefit-card__desc { font-size: 13px; color: var(--c-text-mid); line-height: 1.8; }
+
 .benefit-card__photo {
-  width: 100%; height: 200px;
+  flex-shrink: 0;
+  width: 170px;
+  height: 170px;
   border-radius: 10px;
-  background-size: cover; background-position: center;
+  overflow: hidden;
+  background: #faf7f4;
+}
+.benefit-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 8px;
+  box-sizing: border-box;
+  mix-blend-mode: multiply;
 }
 /* ===========================
    S14: FUND USAGE
 =========================== */
 .fund-section { background: var(--c-white); padding-bottom: 56px; }
 .fund-section .section-head { background: var(--c-white); }
+.fund-chart__label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--c-text-light);
+  text-align: center;
+  margin-bottom: -8px;
+}
 .fund-chart {
-  padding: 0 var(--px);
+  padding: 40px var(--px) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1288,6 +1378,12 @@ strong { font-weight: 700; }
   z-index: 1;
   padding: 72px var(--px) 80px;
   text-align: center;
+}
+.final-cta__eyebrow {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
 }
 .final-cta__title {
   font-family: var(--ff-serif);
