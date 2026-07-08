@@ -54,7 +54,8 @@
   <!-- S2: BEFORE -->
   <section class="story story--before" id="story-before">
     <div class="story__photo story__photo--before">
-      <video src="images/09.mp4" autoplay muted playsinline loop></video>
+      <video src="images/09.mp4" class="story__photo--before-video--sp-only" autoplay muted playsinline loop></video>
+      <video src="images/01_fv.mp4" class="story__photo--before-video--pc-only" autoplay muted playsinline loop></video>
     </div>
     <div class="story__quote js-reveal">
       <blockquote>その一歩は、支援者の寄付から始まった。</blockquote>
@@ -93,7 +94,7 @@
       <p class="story__line js-reveal">帰国後、進路が明確に定まった。</p>
       <p class="story__line js-reveal">なんでもやってみる精神を培った。</p>
       <p class="story__line js-reveal">スタッフとしてもEdFutureに参加。</p>
-      <p class="story__line js-reveal">そして今、<strong style="color:var(--c-accent)">EdFuture Founding Partners 100</strong>の一人に。</p>
+      <p class="story__line story__line--founding js-reveal">そして今、<strong style="color:var(--c-accent)">EdFuture Founding Partners 100</strong>の一人に。</p>
     </div>
     <div class="story__quote js-reveal">
       <blockquote class="story__quote--light">「今度は自分が<br>挑戦する人を応援したい」</blockquote>
@@ -103,11 +104,16 @@
   <!-- S5: CYCLE -->
   <section class="cycle-section" id="cycle">
     <div class="cycle-diagram js-reveal">
-      <img src="images/junkansp.webp" alt="挑戦の循環図" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="images/junkan.webp" media="(min-width: 768px)">
+        <img src="images/junkansp.webp" alt="挑戦の循環図" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="cycle-caption js-reveal">
-      <p class="cycle-caption__lead"><strong>EdFuture Founding Partners 100</strong>は、「挑戦が次の挑戦を生む社会」を広げる<em>最初の100人</em>を集めるプロジェクトです。</p>
-      <p class="cycle-caption__body">私たちが目指すのは、挑戦の機会を得た人がその経験を社会に還元し、次の世代の挑戦を支えていく「挑戦の循環」です。これまで184名の若者の背中を押してきましたが、地方にいたから、お金がなかったから、不登校だったから——など、挑戦できない理由は人それぞれです。そんな若者たちの「やってみたい」をEdFutureは後押しします。</p>
+      <div class="cycle-caption__inner">
+        <p class="cycle-caption__lead"><span><strong>EdFuture Founding Partners 100</strong>は、</span><span>「挑戦が次の挑戦を生む社会」を広げる</span><span><em>最初の100人</em>を集めるプロジェクトです。</span></p>
+        <p class="cycle-caption__body">私たちが目指すのは、挑戦の機会を得た人がその経験を社会に還元し、次の世代の挑戦を支えていく「挑戦の循環」です。これまで184名の若者の背中を押してきましたが、地方にいたから、お金がなかったから、不登校だったから——など、挑戦できない理由は人それぞれです。そんな若者たちの「やってみたい」をEdFutureは後押しします。</p>
+      </div>
     </div>
   </section>
 
@@ -237,6 +243,7 @@
       </div>
       <div class="founder-card__overlay"></div>
       <div class="founder-card__content">
+        <h2 class="founder-card__title-pc">質の高い教育体験を、<br>全ての子どもへ</h2>
         <div class="founder-card__meta">
           <p class="founder-card__role">NPO法人EdFuture 代表理事</p>
           <h3 class="founder-card__name">中村 柾</h3>
@@ -247,8 +254,8 @@
           </ul>
         </div>
         <div class="founder-card__message">
-          <p>海外で教育を学ぶほど、「どこで生まれ育ったか」で子どもの機会が決まってしまう現実に、強い危機感を抱きました。だからコロナ禍に「学びを止めない」という思いでEdFutureを立ち上げ、今も一人ひとりの「一歩を踏み出す」背中をそっと押しています。</p>
-          <p>住んでいる場所や家庭、国籍、ジェンダーに関わらず、「子どもが成長できる体験」を全ての子どもに。そのために、皆様の力が必要です。</p>
+          <p>海外で教育を学ぶほど、「どこで生まれ育ったか」で子どもの機会が決まってしまう現実に、強い危機感を抱きました。<br class="founder-card__msg-br">だからコロナ禍に「学びを止めない」という思いでEdFutureを立ち上げ、<br class="founder-card__msg-br">今も一人ひとりの「一歩を踏み出す」背中をそっと押しています。</p>
+          <p>住んでいる場所や家庭、国籍、ジェンダーに関わらず、<br class="founder-card__msg-br">「子どもが成長できる体験」を全ての子どもに。<br class="founder-card__msg-br">そのために、皆様の力が必要です。</p>
         </div>
       </div>
     </div>
@@ -472,7 +479,7 @@
       <h2 class="section-title section-title--dark roadmap-title">EdFutureも挑戦しています</h2>
     </div>
 
-    <p class="roadmap-lead js-reveal">EdFutureが届けているのは、若者の挑戦の機会だけではありません。<u>団体自身も挑戦の途中</u>にあります。</p>
+    <p class="roadmap-lead js-reveal">EdFutureが届けているのは、若者の挑戦の機会だけではありません。<br><u>団体自身も挑戦の途中</u>にあります。</p>
 
     <div class="roadmap-timeline js-reveal">
       <div class="roadmap-step">
