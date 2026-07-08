@@ -1,0 +1,528 @@
+/* =========================================================
+   PC / TABLET RESPONSIVE  (min-width: 768px)
+   方針B: 背景は全幅（フルブレド）、コンテンツは中央720pxカラム。
+   横パディングトークン --px をPCだけ「ガター」に再定義して一括制御。
+   ※SP用の既存ルールは一切変更しない（min-width内でのみ上書き）。
+========================================================= */
+:root {
+  --px: max(32px, calc((100vw - 720px) / 2));
+}
+html { background: var(--c-primary-deep); }
+body {
+  max-width: 100%;
+  box-shadow: none;
+}
+
+/* ---- S1 FV: ワイド画面用に被写体を見せ、要素を再配置 ----
+   object-fit:cover はコンテナの縦横比に関わらず一貫して切り抜くため、
+   手動のtop/height%指定（モニター縦横比でクロップが激変するバグの原因）は使わない。
+   object-position のみで被写体位置を固定する。 */
+.fv__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 34%;
+  transform: none;
+}
+/* バラバラだった見出し／進捗バッジ／CTAを1つの縦ブロックに統合し、左側中央に配置する */
+.fv__brandbar { top: 32px; left: 40px; gap: 12px; }
+.fv__brandbar-logo { width: 60px; height: 60px; }
+.fv__brandbar-text { font-size: 19px; }
+.fv__stack {
+  left: 110px;
+  right: auto;
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-38%);
+  width: auto;
+  max-width: 480px;
+  gap: 24px;
+}
+.fv__btn {
+  align-self: flex-start;
+  margin: 4px 0 0;
+}
+
+/* ---- S8 代表: 左右分割（説明文=左／写真=右・縦全幅）レイアウト ---- */
+.founder-section { margin-top: 0; } /* section-head非表示化に伴う詰め上げを打ち消す */
+.founder-section .section-head { display: none; } /* 見出しはカード内に移設。背景色を founder-section 単色に統一 */
+.founder-card__title-pc {
+  display: block;
+  font-family: var(--ff-serif);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--c-accent);
+  margin-bottom: 24px;
+}
+.founder-card {
+  display: flex;
+  align-items: stretch;
+  min-height: 760px;
+  width: 100%;
+  margin-left: -140px;
+}
+.founder-card__photo-wrap {
+  order: 2;
+  flex: 1 1 0;
+  height: auto;
+  margin: 40px 48px 40px 0;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.founder-card__photo {
+  object-position: center 22%;
+  transform: none;
+  filter: brightness(1.05);
+}
+.founder-card__overlay { display: none; }
+.founder-card__content {
+  order: 1;
+  position: static;
+  flex: 1 1 0;
+  padding: 72px 56px 72px var(--px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.founder-card__msg-br { display: inline; }
+.founder-card__meta {
+  display: block;
+  margin: 0 0 28px;
+  transform: none;
+  padding: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.founder-card__career { margin-left: 0; }
+
+/* ---- S5.5 課題: 3カード横並び（高さ揃え・出典を下端に固定） ---- */
+.issue-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: 28px 32px;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0;
+}
+.issue-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+}
+.issue-card__label { align-self: flex-start; }
+.issue-card__source {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+/* ---- S12/S13: 2カラム ---- */
+.benefits-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.testimonials-section {
+  padding-bottom: 72px;
+}
+.testimonials-section .section-title {
+  font-size: 38px;
+}
+/* 2カラムグリッド(3枚だと1枚が浮く)をやめ、中央の縦ラインに数珠つなぎの1カラムに */
+.testimonials {
+  display: block;
+  position: relative;
+  width: min(680px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 0 0 0 44px;
+}
+.testimonials::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: rgba(85, 22, 31, 0.15);
+}
+.testimonial {
+  gap: 22px;
+  padding: 34px 30px;
+  border-left-width: 4px;
+  margin-bottom: 32px;
+}
+.testimonial:last-child { margin-bottom: 0; }
+.testimonial::after {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 38px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  box-shadow: 0 0 0 4px var(--c-bg-cream);
+  z-index: 1;
+}
+.testimonial::before {
+  top: 16px;
+  right: 18px;
+  font-size: 104px;
+}
+.testimonial__avatar {
+  width: 92px;
+  height: 92px;
+}
+.testimonial__role {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.testimonial__name {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.testimonial__text,
+.testimonial--featured .testimonial__text {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.testimonial--featured {
+  padding: 32px 28px;
+  gap: 16px;
+}
+.benefits-section {
+  padding-bottom: 92px;
+}
+.benefits-section .section-head {
+  padding-top: 88px;
+  padding-bottom: 48px;
+}
+.benefits-section .section-title {
+  font-size: 44px;
+}
+.benefits-list {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 0;
+  gap: 32px;
+}
+.benefit-card {
+  gap: 16px;
+  padding: 28px;
+}
+.benefit-card__head {
+  gap: 16px;
+}
+.benefit-card__bottom {
+  gap: 20px;
+}
+.benefit-card__badge {
+  width: 60px;
+  height: 60px;
+  font-size: 13px;
+}
+.benefit-card__title {
+  font-size: 20px;
+}
+.benefit-card__desc {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.benefit-card__photo {
+  width: 190px;
+  height: 190px;
+}
+.benefits-capstone {
+  width: min(960px, calc(100% - 64px));
+  margin: 40px auto 0;
+  padding: 36px 32px;
+}
+.benefits-capstone__head {
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.benefits-capstone__label {
+  width: 60px;
+  height: 60px;
+  font-size: 12px;
+}
+.benefits-capstone__title {
+  font-size: 20px;
+}
+.benefits-capstone__text {
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ---- S7 参加者写真グリッド: 列内に収める ---- */
+.story-photos {
+  padding: 0;
+  width: 100%;
+}
+.voices-track {
+  gap: 22px;
+  padding-bottom: 32px;
+}
+.voice-card {
+  flex-basis: 336px;
+}
+.voice-card__photo {
+  height: 246px;
+}
+.voice-card__body {
+  padding: 24px;
+}
+.voice-card__program {
+  font-size: 11px;
+}
+
+/* ---- S9 メディア掲載: 4列 ---- */
+.credibility-section .section-title { font-size: 38px; }
+.numbers-grid {
+  gap: 18px;
+  margin-bottom: 52px;
+}
+.number-card { padding: 28px 18px; }
+.number-card__val { font-size: 42px; }
+.number-card__val span { font-size: 21px; }
+.number-card__label {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.number-card__label--lower { margin-top: 22px; }
+.endorsements { margin-bottom: 48px; }
+.endorsements__title,
+.media-section__title {
+  font-size: 22px;
+  margin-bottom: 22px;
+}
+.endorsements__grid { gap: 30px; }
+.endorsements__row { gap: 24px; }
+.endorsement-logo { height: 68px; }
+.endorsement-logo--jt { height: 86px; }
+.endorsements__names {
+  height: 86px;
+  font-size: 15px;
+}
+.media-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px 24px;
+}
+.media-logo { height: 54px; }
+
+/* ---- S5 循環図: 左に図、右に説明 ---- */
+/* fr単位のみで組む（vwや固定px幅と混在させない）。
+   どちらの列も「自分の列の中で100%」なので、画面幅に関わらず
+   説明文が列からはみ出して見切れることがない。 */
+.cycle-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 48px;
+  padding: 72px 64px;
+}
+.cycle-diagram {
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+.cycle-diagram img {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+.cycle-caption {
+  margin: 0;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 640px;
+  justify-self: start;
+}
+.cycle-caption__lead {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.cycle-caption__lead span {
+  display: block;
+}
+.roadmap-lead { padding: 22px 40px; }
+
+/* ---- フッター: 他セクションに合わせて全体を拡大 ---- */
+footer { padding-top: 72px; }
+.footer-brandzone { gap: 16px; margin-bottom: 32px; }
+.footer-logo { width: 64px; height: 64px; }
+.footer-brand { font-size: 1.6rem; }
+.footer-tagline { font-size: 1rem; }
+.social-links { gap: 32px; padding-bottom: 40px; margin-bottom: 40px; }
+.social-link svg { width: 32px; height: 32px; }
+.footer-about { max-width: 560px; }
+.footer-about__label { font-size: 0.9rem; margin-bottom: 24px; }
+.footer-about__list { font-size: 0.9rem; line-height: 1.75; }
+.footer-about__row { padding: 13px 0 13px 60px; }
+.footer-about dt { flex-basis: 90px; }
+.footer-about__ext { width: 13px; height: 13px; }
+.footer-bottom { margin-top: 48px; padding: 24px var(--px); }
+.copyright { font-size: 0.8rem; }
+
+/* ---- 見出し階層をPC向けに引き上げ ---- */
+.section-head { padding: 72px var(--px) 40px; }
+.section-title { font-size: 32px; }
+.issue-lead { font-size: 32px; }
+
+/* ---- S1 FV: コピーとCTAを主役サイズに ---- */
+.fv__title { font-size: 60px; }
+.fv__lead { font-size: 20px; margin-top: 14px; }
+.fv__subtitle { font-size: 15px; margin-top: 14px; }
+.fv__progress-current { font-size: 34px; }
+.fv__progress-total { font-size: 15px; }
+.fv__progress-remain { font-size: 14px; }
+.fv__btn { max-width: 340px; padding: 20px 36px 26px; }
+.fv__btn-badge { font-size: 12px; }
+.fv__btn-main { font-size: 21px; }
+
+/* ---- S2 導入動画: 全幅化による巨大化を防ぎ中央に ---- */
+.story--before .story__photo--before { max-width: 100%; }
+.story--before .story__photo--before video.story__photo--before-video--pc-only {
+  display: block;
+  width: 100vw;
+  height: auto;
+}
+.story--before .story__photo--before video.story__photo--before-video--sp-only { display: none; }
+
+/* ---- S3-S4 ストーリー: 写真をシネマティック横長に、文字を格上げ ---- */
+.story__moment-img { aspect-ratio: 16/7; }
+.story__moment-caption { font-size: 22px; padding: 0 var(--px); bottom: 60px; }
+.story__line { font-size: 26px; }
+.story__line--founding {
+  font-size: clamp(20px, 2.4vw, 26px);
+  white-space: nowrap;
+}
+.story__quote { padding-block: 72px; }
+.story__quote blockquote {
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.55;
+  white-space: nowrap;
+}
+.story__quote blockquote br { display: none; }
+
+/* ---- S6 プログラム: 写真帯に高さと迫力を ---- */
+.program-hero { padding-top: 608px; }
+.program-hero__bg,
+.program-hero__overlay { height: 600px; }
+.program-hero__bg { background-size: cover; background-position: center; }
+.program-hero__heading { top: 420px; }
+.program-hero__title { font-size: 40px; }
+.program-hero__lead,
+.program-hero__text { font-size: 14px; }
+
+/* ---- S10 支援ティア: 3カラムで比較しやすく ---- */
+.impact-section { padding-bottom: 44px; }
+.impact-hero { height: 460px; }
+.impact-hero__text { bottom: 44px; }
+.impact-hero__label {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.impact-hero__title { font-size: 38px; }
+.impact-body {
+  padding-right: max(32px, calc((100vw - 1120px) / 2));
+  padding-left: max(32px, calc((100vw - 1120px) / 2));
+}
+.impact-body__lead {
+  max-width: 920px;
+  margin: 0 auto;
+  font-size: 17px;
+  padding: 44px 0 36px;
+}
+.impact-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  align-items: stretch;
+  padding-top: 38px;
+}
+.impact-tier { display: flex; flex-direction: column; }
+.impact-tier__photo { height: 220px; }
+.impact-tier__badge {
+  top: 16px;
+  right: 16px;
+  font-size: 13px;
+  padding: 5px 14px;
+}
+.impact-tier__pill {
+  bottom: 20px;
+  font-size: 15px;
+  padding: 10px 24px;
+}
+.impact-tier__pill strong { font-size: 22px; }
+.impact-tier__body {
+  flex: 1;
+  padding: 28px 24px;
+}
+.impact-tier__result { font-size: 19px; }
+.impact-tier__result strong { font-size: 25px; }
+.impact-tier__desc {
+  font-size: 15px;
+  margin-top: 14px;
+}
+
+/* ---- S15 FAQ: 質問文をやや大きく ---- */
+.faq-section .section-title { font-size: 38px; }
+.faq-list {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 0;
+}
+.faq-q { font-size: 20px; padding: 28px 0; }
+.faq-icon { font-size: 26px; }
+.faq-a p { font-size: 17px; padding-bottom: 28px; }
+
+/* ---- S17 最終CTA: 背景写真の縦幅を拡大・位置調整・見出し拡大 ---- */
+.final-cta { min-height: 100vh; }
+.final-cta__bg-img { object-position: center 22%; }
+.final-cta__title { font-size: 44px; line-height: 1.7; }
+.final-cta__title::before { width: 68px; }
+.final-cta__btn { bottom: 110px; max-width: 420px; padding: 26px 40px 33px; }
+.final-cta__btn-badge { font-size: 13px; }
+.final-cta__btn-text { font-size: 23px; }
+
+/* ---- S14 ロードマップ: 社会的複利ブロックの幅(960px)を基準に拡大 ---- */
+.roadmap-section .section-title { font-size: 38px; }
+.roadmap-lead {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto 32px;
+  padding: 26px 44px;
+  font-size: 20px;
+}
+.roadmap-timeline {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 0;
+}
+.roadmap-step { padding-bottom: 48px; }
+.roadmap-step__year { font-size: 18px; }
+.roadmap-step__text { font-size: 15px; line-height: 1.8; }
+.roadmap-note {
+  width: min(960px, calc(100% - 64px));
+  margin: 32px auto 0;
+  padding: 30px 36px;
+}
+.roadmap-note__text { font-size: 15px; }
+.roadmap-highlight {
+  width: min(960px, calc(100% - 64px));
+  margin: 24px auto 0;
+  padding: 30px 36px;
+  border: 2px solid var(--c-accent);
+}
+.roadmap-highlight__text { font-size: 17px; white-space: nowrap; }
+
+/* ---- S11 中間CTA: ボタンを少し大きく ---- */
+.mid-cta__btn {
+  max-width: 420px;
+  padding: 26px 40px;
+}
+.mid-cta__btn-badge { font-size: 13px; }
+.mid-cta__btn-main { font-size: 23px; }

@@ -224,18 +224,23 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
   }
 
   function scrollTo(index, smooth) {
-    const pos = getCenteredScroll(index);
     if (smooth) {
+      const pos = getCenteredScroll(index);
       track.style.scrollBehavior = 'smooth';
       track.scrollLeft = pos;
-    } else {
-      track.style.scrollSnapType = 'none';
-      track.style.scrollBehavior = 'auto';
-      track.scrollLeft = pos;
-      void track.offsetWidth;
-      track.style.scrollSnapType = '';
-      track.style.scrollBehavior = '';
+      return;
     }
+    // 強制リフロー回避: void track.offsetWidth によるスタイル即時反映の
+    // 強制読み取りをやめ、rAFでフレームをまたいで適用する（見た目は同一の瞬間ジャンプ）
+    track.style.scrollSnapType = 'none';
+    track.style.scrollBehavior = 'auto';
+    requestAnimationFrame(() => {
+      track.scrollLeft = getCenteredScroll(index);
+      requestAnimationFrame(() => {
+        track.style.scrollSnapType = '';
+        track.style.scrollBehavior = '';
+      });
+    });
   }
 
   function setInitialPosition() {
