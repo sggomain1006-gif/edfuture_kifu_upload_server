@@ -18,9 +18,12 @@ document.querySelectorAll('.js-reveal').forEach((el) => revealObserver.observe(e
    FV COUNT UP
 =========================== */
 const progressNum = document.getElementById('progressNum');
+const progressRemain = document.getElementById('progressRemain');
 if (progressNum) {
   const target = 38;
+  const total = 100;
   const duration = 3000;
+  if (progressRemain) progressRemain.textContent = total - target;
   let started = false;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

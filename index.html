@@ -34,19 +34,30 @@
     <div class="fv__bg">
       <img src="images/01_fv.webp" alt="挑戦する高校生たち" class="fv__bg-img" decoding="async" fetchpriority="high">
     </div>
-    <div class="fv__copy">
-      <h1 class="fv__title">挑戦は、<br>次の挑戦へ。</h1>
-      <p class="fv__subtitle">ー挑戦の循環を作る最初の100人</p>
+    <div class="fv__brandbar">
+      <img src="images/rogo.webp" alt="" class="fv__brandbar-logo">
+      <span class="fv__brandbar-text">NPO法人EdFuture</span>
     </div>
-    <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="fv__btn">
-      <span class="fv__btn-badge">\ 月1000円〜寄付する /</span>
-      <span class="fv__btn-main">最初の100人になる</span>
-    </a>
-    <div class="fv__progress" aria-label="Founding Partners 100の参加状況">
-      <span class="fv__progress-count">
-        <span class="fv__progress-label">現在</span>
-        <strong class="fv__progress-current" id="progressNum">0</strong><span class="fv__progress-unit">人</span>
-      </span>
+
+    <div class="fv__stack">
+      <div class="fv__copy">
+        <h1 class="fv__title">挑戦は、<br>次の挑戦へ。</h1>
+        <p class="fv__lead">高校生・大学生の海外挑戦を、<br>月1,000円から支える。</p>
+        <p class="fv__subtitle">挑戦の循環をつくる、最初の100人へ。</p>
+      </div>
+
+      <div class="fv__progress" aria-label="Founding Partners 100の参加状況">
+        <span class="fv__progress-count">
+          <span class="fv__progress-label">現在</span>
+          <strong class="fv__progress-current" id="progressNum">0</strong><span class="fv__progress-total">/100人</span>
+        </span>
+        <span class="fv__progress-remain">あと<strong id="progressRemain">62</strong>人</span>
+      </div>
+
+      <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="fv__btn">
+        <span class="fv__btn-badge">\ 月1,000円から若者の挑戦を支える /</span>
+        <span class="fv__btn-main">最初の100人として参加する</span>
+      </a>
     </div>
   </section>
 
@@ -72,7 +83,7 @@
       </div>
       <div class="story__moment js-reveal">
         <video src="images/04.mp4" class="story__moment-img" poster="images/004.webp" autoplay muted loop playsinline></video>
-        <p class="story__moment-caption">はっきりと物事を言って初めて伝わると知り、ここでは全て自分の行動次第なのだと気づいた。</p>
+        <p class="story__moment-caption">はっきり言葉にしないと伝わらない。ここでは全て自分の行動次第なのだと気づいた。</p>
       </div>
       <div class="story__moment js-reveal">
         <video src="images/01.mp4" class="story__moment-img" poster="images/001.webp" autoplay muted loop playsinline style="filter: brightness(1.25)"></video>
@@ -128,35 +139,88 @@
     <div class="issue-cards">
 
       <div class="issue-card js-reveal">
+        <span class="issue-card__label">貧困</span>
+        <h3 class="issue-card__headline">子どもの<em>9人に1人</em>が<br>相対的貧困の中にいる</h3>
+        <div class="issue-stats" role="img" aria-label="日本の子どもをめぐる貧困の実態。子どもの相対的貧困率11.5%、ひとり親世帯の貧困率44.5%、低所得家庭の体験ゼロ率29.9%、高所得と低所得の体験格差2.6倍">
+          <div class="issue-stat">
+            <p class="issue-stat__val">11.5<span>%</span></p>
+            <p class="issue-stat__label">子どもの相対的貧困率</p>
+          </div>
+          <div class="issue-stat">
+            <p class="issue-stat__val">44.5<span>%</span></p>
+            <p class="issue-stat__label">ひとり親世帯の貧困率</p>
+          </div>
+          <div class="issue-stat">
+            <p class="issue-stat__val">29.9<span>%</span></p>
+            <p class="issue-stat__label">低所得家庭の体験ゼロ率</p>
+          </div>
+          <div class="issue-stat">
+            <p class="issue-stat__val">2.6<span>倍</span></p>
+            <p class="issue-stat__label">高所得と低所得の体験格差</p>
+          </div>
+        </div>
+        <p class="issue-card__text">17歳以下の子どもの相対的貧困率は11.5%、ひとり親世帯では<strong>44.5%</strong>に上ります。低所得家庭では体験ゼロの子どもが29.9%と、高所得家庭の2.6倍。経済的な余裕のなさが、<u>複数の格差に連鎖しています</u>。</p>
+        <p class="issue-card__source">出典：厚生労働省「2022年国民生活基礎調査」／こども家庭庁「令和6年版こども白書」</p>
+      </div>
+
+      <div class="issue-card js-reveal">
         <span class="issue-card__label">経済</span>
-        <h3 class="issue-card__headline">学校外活動費に<em>約2.2倍</em>の<br>格差が生まれている</h3>
-        <img src="images/kakusa_keizai.webp" alt="学校外活動費の格差" class="issue-card__img" loading="lazy" decoding="async">
-        <p class="issue-card__text">公立高校（全日制）の学校外活動費は、世帯年収400万円未満で年間18.0万円、1,200万円以上で39.5万円。この費目には国際交流体験活動も含まれており、家庭の経済力が海外体験の機会差につながっています。</p>
-        <p class="issue-card__source">参考：令和5年度子供の学習費調査（文部科学省）</p>
+        <h3 class="issue-card__headline">「時間的余裕がない」は<br><em>所得を問わず</em>約半数</h3>
+        <div class="issue-chart-legend">
+          <span class="issue-chart-legend__item"><i class="issue-chart-legend__swatch"></i>年収300万円未満</span>
+          <span class="issue-chart-legend__item"><i class="issue-chart-legend__swatch issue-chart-legend__swatch--lo"></i>年収600万円以上</span>
+        </div>
+        <svg class="issue-chart" viewBox="0 0 300 250" role="img" aria-label="子どもに体験をさせてあげられなかった理由（世帯年収別）。経済的余裕がない：年収300万円未満56.3%、600万円以上16.9%。時間的余裕がない：51.5%、47.7%。近くに活動がない：26.6%、31.0%。精神・体力的余裕がない：20.7%、16.2%。活動情報がわからない：14.3%、13.5%">
+          <text class="issue-chart__cat" x="10" y="13">経済的余裕がない</text>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="10" y="17" width="244" height="10" rx="3"/>
+          <rect class="issue-chart__bar issue-chart__bar--lo" x="10" y="30" width="73" height="10" rx="3"/>
+
+          <text class="issue-chart__cat" x="10" y="59">時間的余裕がない</text>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="10" y="63" width="223" height="10" rx="3"/>
+          <rect class="issue-chart__bar issue-chart__bar--lo" x="10" y="76" width="207" height="10" rx="3"/>
+
+          <text class="issue-chart__cat" x="10" y="105">近くに活動がない</text>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="10" y="109" width="115" height="10" rx="3"/>
+          <rect class="issue-chart__bar issue-chart__bar--lo" x="10" y="122" width="134" height="10" rx="3"/>
+
+          <text class="issue-chart__cat" x="10" y="151">精神・体力的余裕がない</text>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="10" y="155" width="90" height="10" rx="3"/>
+          <rect class="issue-chart__bar issue-chart__bar--lo" x="10" y="168" width="70" height="10" rx="3"/>
+
+          <text class="issue-chart__cat" x="10" y="197">活動情報がわからない</text>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="10" y="201" width="62" height="10" rx="3"/>
+          <rect class="issue-chart__bar issue-chart__bar--lo" x="10" y="214" width="59" height="10" rx="3"/>
+
+          <line class="issue-chart__axis" x1="10" y1="13" x2="10" y2="228"/>
+          <text class="issue-chart__label" x="10" y="240" text-anchor="start">0%</text>
+          <text class="issue-chart__label" x="140" y="240" text-anchor="middle">30%</text>
+          <text class="issue-chart__label" x="270" y="240" text-anchor="end">60%</text>
+        </svg>
+        <p class="issue-card__text">子どもに体験をさせてあげられなかった理由で最も多いのは「経済的な余裕がない」（年収300万未満56.3%／600万以上16.9%）。ただし「時間的な余裕がない」は<strong>51.5%／47.7%</strong>と所得にかかわらず約半数が挙げており、<u>機会格差の原因はお金だけではありません</u>。</p>
+        <p class="issue-card__source">出典：チャンス・フォー・チルドレン「体験格差実態調査」2023年7月</p>
       </div>
 
       <div class="issue-card js-reveal">
         <span class="issue-card__label">地域</span>
-        <h3 class="issue-card__headline">高校生の留学率に<em>最大8倍</em>の<br>地域差がある</h3>
-        <img src="images/kakusa_chiiki.webp" alt="都道府県別の高校生留学率の差" class="issue-card__img" loading="lazy" decoding="async">
-        <p class="issue-card__text">高校生の留学率は都道府県によって京都2.90%、青森0.36%と、住む場所で最大8倍の開きがあります。留学相談員を置く自治体もわずか3都道府県にとどまり、相談できる環境にも差があります。</p>
-        <p class="issue-card__source">参考：教育未来創造会議 参考データ集（内閣官房）／文部科学省</p>
-      </div>
-
-      <div class="issue-card js-reveal">
-        <span class="issue-card__label">家庭</span>
-        <h3 class="issue-card__headline">留学のきっかけの<em>4人に1人</em>は<br>「身近な人の海外経験」</h3>
-        <img src="images/kakusa_katei.webp" alt="留学に興味を持ったきっかけの割合" class="issue-card__img" loading="lazy" decoding="async">
-        <p class="issue-card__text">留学に興味を持ったきっかけで最も多かったのは「身近な家族や友人の海外経験を聞いたこと」で25.2%。家庭に海外を知る人がいるかどうかが、留学を思いつけるかを左右しています。</p>
-        <p class="issue-card__source">参考：教育未来創造会議 参考データ集／文部科学省「学生の海外留学に関する調査2022」</p>
-      </div>
-
-      <div class="issue-card js-reveal">
-        <span class="issue-card__label">社会</span>
-        <h3 class="issue-card__headline">パスポート保有率は<br>いまも<em>2割未満</em></h3>
-        <img src="images/kakusa_shakai.webp" alt="パスポート保有率と留学者数の推移" class="issue-card__img" loading="lazy" decoding="async">
-        <p class="issue-card__text">日本人のパスポート保有率は約17.8%。大学生の留学者数もコロナ後に回復したとはいえ、2024年度9.1万人とピークだった2018年度11.5万人には届いていません。</p>
-        <p class="issue-card__source">参考：文部科学省／外務省「旅券統計」／JASSO「日本人学生留学状況調査」</p>
+        <h3 class="issue-card__headline">大学進学率は<em>最大23%</em>の<br>地域差がある</h3>
+        <svg class="issue-chart" viewBox="0 0 300 190" role="img" aria-label="都道府県別の大学・短大進学率。京都73%、大阪65%、全国平均61%、岩手53%、沖縄50%">
+          <line class="issue-chart__axis" x1="15" y1="160" x2="285" y2="160"/>
+          <rect class="issue-chart__bar" x="18" y="30" width="32" height="130" rx="4"/>
+          <rect class="issue-chart__bar" x="76" y="44" width="32" height="116" rx="4"/>
+          <rect class="issue-chart__bar" x="134" y="51" width="32" height="109" rx="4"/>
+          <rect class="issue-chart__bar" x="192" y="66" width="32" height="94" rx="4"/>
+          <rect class="issue-chart__bar issue-chart__bar--hi" x="250" y="71" width="32" height="89" rx="4"/>
+          <text class="issue-chart__value" x="34" y="24" text-anchor="middle">73%</text>
+          <text class="issue-chart__value" x="150" y="45" text-anchor="middle">61%</text>
+          <text class="issue-chart__value" x="266" y="65" text-anchor="middle">50%</text>
+          <text class="issue-chart__label" x="34" y="176" text-anchor="middle">京都</text>
+          <text class="issue-chart__label" x="92" y="176" text-anchor="middle">大阪</text>
+          <text class="issue-chart__label" x="150" y="176" text-anchor="middle">全国平均</text>
+          <text class="issue-chart__label" x="208" y="176" text-anchor="middle">岩手</text>
+          <text class="issue-chart__label" x="266" y="176" text-anchor="middle">沖縄</text>
+        </svg>
+        <p class="issue-card__text">高校卒業後に大学・短大へ進学する割合は、都道府県によって京都73%・全国平均61%・<strong>沖縄50%</strong>と差があります。生まれ育った場所によって、<u>その先に進める選択肢の数そのものが変わってしまう</u>のが現実です。</p>
+        <p class="issue-card__source">出典：文部科学省「令和6年度学校基本調査」／内閣府「地域課題分析レポート2024年秋号」</p>
       </div>
 
     </div>
@@ -203,20 +267,20 @@
     <div class="voices-track js-reveal">
 
       <div class="voice-card">
-        <div class="voice-card__photo" style="background-image:url('images/sankasha.webp'); background-position: center top;"></div>
+        <div class="voice-card__photo" style="background-image:url('images/2222.webp'); background-position: center top;"></div>
         <div class="voice-card__body">
-          <p class="voice-card__program">ワールド寺子屋 2026 / ニューヨーク</p>
-          <blockquote class="voice-card__quote">「海外なんて自分には関係ないと思っていた。でも、ニューヨークで同世代の人たちと話して、初めて『自分にもできるかもしれない』と思えた。あの一歩が、今の私を作っています。」</blockquote>
-          <p class="voice-card__name">A.S. さん（高校2年生・愛知県）</p>
+          <p class="voice-card__program">ワールド寺子屋 2023 / サンフランシスコ</p>
+          <blockquote class="voice-card__quote">高校最後の春、経済的な理由で一度は諦めた留学に挑戦することができました。海外経験だけなく、「自分にも挑戦できる」という自信と、切磋琢磨しながら応援し合える仲間を得ました。参加後はEdFutureスタッフとして挑戦を支える側になりました。その後、トビタテ留学JAPANの制度を活用し、デンマークに長期留学、今はインドネシアで国連インターンに参加しています。海外経験も英語力もなかった私の最初の一歩を後押ししてくださった皆さんに心から感謝しています。</blockquote>
+          <p class="voice-card__name">Hanon さん（高校3年生・東京都）</p>
         </div>
       </div>
 
       <div class="voice-card">
-        <div class="voice-card__photo" style="background-image:url('images/DSC_7768.webp'); background-position: center 20%;"></div>
+        <div class="voice-card__photo" style="background-image:url('images/1111.webp'); background-position: center 15%;"></div>
         <div class="voice-card__body">
-          <p class="voice-card__program">グローバルプロジェクト 2026 / ロサンゼルス</p>
-          <blockquote class="voice-card__quote">「参加前は英語も自信がなくて、自分が世界と繋がれるとは思っていなかった。でも挑戦してみて、世界はもっと近いと気づいた。支援してくれた人たちに、本当に感謝しています。」</blockquote>
-          <p class="voice-card__name">M.K. さん（高校3年生・岩手県）</p>
+          <p class="voice-card__program">ワールド寺子屋 2025 / サンフランシスコ</p>
+          <blockquote class="voice-card__quote">「お金がないから海外なんて無理。」そう思っていた私の背中を押してくれたのがEd Futureでした。経済的な理由で夢を諦めかけていた自分が、勇気を出して一歩踏み出せたのは、その支えのおかげです。サンフランシスコで出会った人々や文化、景色、そして触れた新しい価値観は、今も私の大切な財産で、挑戦を続ける原動力になっています。プログラム終了後は、地元北海道で会社を企業し、挑戦し続けてます。次は自分が、誰かの背中を押せる存在になりたいです。</blockquote>
+          <p class="voice-card__name">Shun さん（高校2年生・北海道）</p>
         </div>
       </div>
 
@@ -268,16 +332,16 @@
     </div>
     <div class="numbers-grid js-reveal">
       <div class="number-card">
-        <p class="number-card__val">184<span>人</span></p>
-        <p class="number-card__label">これまでに出会った<br>学生数</p>
+        <p class="number-card__val">232<span>人</span></p>
+        <p class="number-card__label number-card__label--lower">プログラム参加者数</p>
       </div>
       <div class="number-card">
         <p class="number-card__val">60<span>%</span></p>
         <p class="number-card__label number-card__label--lower">が海外初体験</p>
       </div>
       <div class="number-card">
-        <p class="number-card__val">5<span>年</span></p>
-        <p class="number-card__label number-card__label--lower">の活動実績</p>
+        <p class="number-card__val">36<span>都道府県</span></p>
+        <p class="number-card__label number-card__label--lower">から参加</p>
       </div>
     </div>
     <div class="endorsements js-reveal">
@@ -576,9 +640,6 @@
       <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="final-cta__btn">
         <span class="final-cta__btn-badge">\ Founding Partners 100 /</span>
         <span class="final-cta__btn-text"><span class="final-cta__btn-num">39</span>/<span class="final-cta__btn-num-total">100</span>人目の仲間になる</span>
-        <span class="final-cta__btn-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg>
-        </span>
       </a>
     </div>
   </section>

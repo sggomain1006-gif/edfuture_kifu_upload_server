@@ -6,7 +6,6 @@
   --c-primary-dark: #3a0f15;
   --c-primary-deep: #1a0508;
   --c-accent:       #FFD83E;
-  --c-accent-dark:  #e6c030;
   --c-white:        #ffffff;
   --c-bg-light:     #fafaf8;
   --c-bg-cream:     #f5f0eb;
@@ -104,11 +103,37 @@ strong { font-weight: 700; }
   object-fit: cover; object-position: left top;
   transform: scale(1.25) translate(-11%, -4%); transform-origin: left top;
 }
-.fv__copy {
+.fv__brandbar {
   position: absolute;
-  bottom: 230px;
+  top: 20px;
   left: var(--px);
   z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fv__brandbar-logo {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.6));
+}
+.fv__brandbar-text {
+  font-family: var(--ff-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-white);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7), 0 1px 2px rgba(0,0,0,0.6);
+}
+.fv__stack {
+  position: absolute;
+  left: var(--px);
+  right: var(--px);
+  bottom: 56px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .fv__title {
   font-family: var(--ff-serif);
@@ -121,33 +146,33 @@ strong { font-weight: 700; }
   white-space: nowrap;
   text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.5);
 }
-.fv__subtitle {
-  display: inline-block;
-  margin-top: 8px;
-  font-family: var(--ff-serif);
+.fv__lead {
+  margin-top: 10px;
   font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c-white);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.5);
+}
+.fv__subtitle {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--ff-serif);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.95);
-  background: rgba(0,0,0,0.2);
-  padding: 2px 10px;
-  border-radius: 4px;
-  white-space: nowrap;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.65);
 }
 .fv__btn {
-  position: absolute;
-  left: var(--px);
-  right: var(--px);
-  bottom: 58px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: auto;
-  max-width: 360px;
-  height: auto;
-  padding: 20px 32px;
+  max-width: 320px;
+  margin: 4px auto 0;
+  padding: 18px 28px;
   background: var(--c-accent);
   color: var(--c-primary);
   text-align: center;
@@ -156,7 +181,7 @@ strong { font-weight: 700; }
   transition: transform 0.25s, box-shadow 0.25s;
 }
 .fv__btn-badge {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0;
   color: var(--c-primary);
@@ -165,7 +190,7 @@ strong { font-weight: 700; }
   white-space: nowrap;
 }
 .fv__btn-main {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 900;
   line-height: 1.1;
   white-space: nowrap;
@@ -173,20 +198,9 @@ strong { font-weight: 700; }
 .fv__btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,216,62,0.45); }
 .fv__btn:active { transform: translateY(0); }
 .fv__progress {
-  position: absolute;
-  left: 285px;
-  right: auto;
-  bottom: 231px;
-  z-index: 3;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-  pointer-events: none;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 .fv__progress-label {
   font-size: 12px;
@@ -198,45 +212,54 @@ strong { font-weight: 700; }
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
-  padding: 3px 9px 5px;
-  background: rgba(0,0,0,0.22);
-  border-radius: 0;
+  padding: 5px 12px;
+  background: rgba(0,0,0,0.32);
+  border-radius: var(--radius-full);
 }
 .fv__progress-current {
   font-family: var(--ff-serif);
-  font-size: 42px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--c-accent);
   letter-spacing: 0;
-  line-height: 0.95;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
   text-shadow: 0 2px 14px rgba(255,216,62,0.28);
 }
-.fv__progress-unit {
+.fv__progress-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+.fv__progress-remain {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+.fv__progress-remain strong {
+  color: var(--c-accent);
   font-size: 15px;
-  font-weight: 800;
-  color: var(--c-white);
 }
 @media (max-width: 374px) {
+  .fv__stack { gap: 12px; bottom: 40px; }
   .fv__title { font-size: 36px; }
-  .fv__subtitle { font-size: 13px; }
+  .fv__lead { font-size: 13px; }
+  .fv__subtitle { font-size: 12px; }
   .fv__btn {
     padding-left: 24px;
     padding-right: 24px;
   }
   .fv__btn-main { font-size: 19px; }
-  .fv__progress {
-    left: 244px;
-    bottom: 233px;
-  }
   .fv__progress-count {
     gap: 3px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .fv__progress-label { font-size: 10px; }
-  .fv__progress-current { font-size: 29px; }
-  .fv__progress-unit { font-size: 12px; }
+  .fv__progress-current { font-size: 24px; }
+  .fv__progress-total { font-size: 11px; }
+  .fv__progress-remain { font-size: 11px; }
   .benefits-title { font-size: 23px; }
   .roadmap-title { font-size: 23px; }
   .stories-title { font-size: 22px; }
@@ -247,20 +270,19 @@ strong { font-weight: 700; }
   .final-cta__btn-text { font-size: 19px; }
 }
 @media (min-width: 375px) and (max-width: 400px) {
+  .fv__stack { gap: 14px; }
   .fv__title { font-size: 39px; }
-  .fv__subtitle { font-size: 14px; }
-  .fv__progress {
-    left: 252px;
-    bottom: 232px;
-  }
+  .fv__lead { font-size: 14px; }
+  .fv__subtitle { font-size: 12px; }
   .fv__progress-count {
     gap: 3px;
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .fv__progress-label { font-size: 11px; }
-  .fv__progress-current { font-size: 33px; }
-  .fv__progress-unit { font-size: 13px; }
+  .fv__progress-current { font-size: 26px; }
+  .fv__progress-total { font-size: 12px; }
+  .fv__progress-remain { font-size: 12px; }
   .benefits-title { font-size: 24px; }
   .roadmap-title { font-size: 24px; }
   .stories-title { font-size: 23px; }
@@ -403,14 +425,15 @@ strong { font-weight: 700; }
 .issue-cards {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 16px;
+  padding: 0 var(--px);
 }
 .issue-card {
-  padding: 36px var(--px);
-  border-top: 1px solid rgba(85,22,31,0.1);
-}
-.issue-card:last-child {
-  border-bottom: 1px solid rgba(85,22,31,0.1);
+  background: var(--c-white);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--c-primary);
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 .issue-card__headline {
   font-family: var(--ff-serif);
@@ -425,12 +448,77 @@ strong { font-weight: 700; }
   color: var(--c-primary);
   font-size: 24px;
 }
-.issue-card__img {
+.issue-chart {
   width: 100%;
-  border-radius: 8px;
+  height: auto;
   display: block;
   margin-bottom: 20px;
-  background: #fff;
+}
+.issue-chart__axis { stroke: rgba(0,0,0,0.12); stroke-width: 1; }
+.issue-chart__bar { fill: rgba(85,22,31,0.18); }
+.issue-chart__bar--hi { fill: var(--c-primary); }
+.issue-chart__bar--lo { fill: #C96070; }
+.issue-chart__cat {
+  font-family: var(--ff-sans);
+  font-size: 11px;
+  fill: var(--c-text);
+}
+.issue-chart__value {
+  font-family: var(--ff-serif);
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--c-primary);
+}
+.issue-chart__label {
+  font-family: var(--ff-sans);
+  font-size: 10.5px;
+  fill: var(--c-text-mid);
+}
+
+.issue-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  margin-bottom: 12px;
+  font-family: var(--ff-sans);
+  font-size: 11px;
+  color: var(--c-text-mid);
+}
+.issue-chart-legend__item { display: flex; align-items: center; gap: 5px; }
+.issue-chart-legend__swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  display: inline-block;
+  background: var(--c-primary);
+}
+.issue-chart-legend__swatch--lo { background: #C96070; }
+
+.issue-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.issue-stat {
+  background: rgba(85,22,31,0.05);
+  border-radius: var(--radius);
+  padding: 14px 12px;
+}
+.issue-stat__val {
+  font-family: var(--ff-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--c-primary);
+  line-height: 1.1;
+}
+.issue-stat__val span { font-size: 13px; }
+.issue-stat__label {
+  font-family: var(--ff-sans);
+  font-size: 11px;
+  color: var(--c-text-mid);
+  margin-top: 6px;
+  line-height: 1.4;
 }
 .issue-card__text {
   font-size: 13px;
@@ -438,6 +526,8 @@ strong { font-weight: 700; }
   line-height: 1.85;
   margin-bottom: 6px;
 }
+.issue-card__text strong { color: var(--c-primary); font-weight: 700; }
+.issue-card__text u { text-decoration-color: var(--c-primary); text-underline-offset: 2px; }
 .issue-card__source {
   font-size: 10px;
   color: rgba(0,0,0,0.35);
@@ -450,8 +540,8 @@ strong { font-weight: 700; }
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 3px 10px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
   margin-bottom: 10px;
 }
 
@@ -462,19 +552,12 @@ strong { font-weight: 700; }
   background: #FEFDFB;
   padding-bottom: 0;
 }
-.cycle-section .section-head--dark {
-  background: #FEFDFB;
-  color: var(--c-primary);
-}
-.cycle-section .section-head--dark .section-label {
-  color: var(--c-primary);
-}
-.cycle-section .section-title,
-.cycle-section .section-sub {
-  color: var(--c-primary);
-}
 .cycle-diagram {
   padding: 56px 0 0;
+}
+.cycle-diagram picture {
+  display: block;
+  width: 100%;
 }
 .cycle-diagram img {
   width: 100%;
@@ -1399,7 +1482,6 @@ strong { font-weight: 700; }
   paint-order: stroke fill;
 }
 .final-cta__btn-num-total { font-size: 0.8em; }
-.final-cta__btn-icon { display: none; }
 /* ===========================
    FOOTER
 =========================== */
@@ -1539,25 +1621,35 @@ footer {
     box-shadow: none;
   }
 
-  /* ---- S1 FV: ワイド画面用に被写体を見せ、要素を再配置 ---- */
+  /* ---- S1 FV: ワイド画面用に被写体を見せ、要素を再配置 ----
+     object-fit:cover はコンテナの縦横比に関わらず一貫して切り抜くため、
+     手動のtop/height%指定（モニター縦横比でクロップが激変するバグの原因）は使わない。
+     object-position のみで被写体位置を固定する。 */
   .fv__bg-img {
-    position: absolute;
-    left: 0;
-    top: -76%;
     width: 100%;
-    height: 176%;
-    object-position: left top;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% 34%;
     transform: none;
-    transform-origin: left top;
   }
-  .fv__copy { bottom: 32%; }
-  .fv__progress {
-    top: 40px;
-    left: var(--px);
+  /* バラバラだった見出し／進捗バッジ／CTAを1つの縦ブロックに統合し、左側中央に配置する */
+  .fv__brandbar { top: 32px; left: 40px; gap: 12px; }
+  .fv__brandbar-logo { width: 60px; height: 60px; }
+  .fv__brandbar-text { font-size: 19px; }
+  .fv__stack {
+    left: 110px;
     right: auto;
     bottom: auto;
+    top: 50%;
+    transform: translateY(-38%);
+    width: auto;
+    max-width: 480px;
+    gap: 24px;
   }
-  .fv__btn { bottom: 64px; }
+  .fv__btn {
+    align-self: flex-start;
+    margin: 4px 0 0;
+  }
 
   /* ---- S8 代表: 左右分割（説明文=左／写真=右・縦全幅）レイアウト ---- */
   .founder-section { margin-top: 0; } /* section-head非表示化に伴う詰め上げを打ち消す */
@@ -1575,7 +1667,8 @@ footer {
     display: flex;
     align-items: stretch;
     min-height: 760px;
-    margin-left: -100px;
+    width: 100%;
+    margin-left: -140px;
   }
   .founder-card__photo-wrap {
     order: 2;
@@ -1612,20 +1705,28 @@ footer {
   }
   .founder-card__career { margin-left: 0; }
 
-  /* ---- S5.5 課題: 4カード → 2×2 ---- */
+  /* ---- S5.5 課題: 3カード横並び（高さ揃え・出典を下端に固定） ---- */
   .issue-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 40px;
-    max-width: 720px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 28px 32px;
+    max-width: 1160px;
     margin: 0 auto;
+    padding: 0;
   }
-  .issue-card { padding: 36px 0; }
-  .issue-card:nth-child(-n + 2) { border-top: 1px solid rgba(85,22,31,0.1); }
-  .issue-card:last-child { border-bottom: none; }
+  .issue-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+  }
+  .issue-card__label { align-self: flex-start; }
+  .issue-card__source {
+    margin-top: auto;
+    padding-top: 16px;
+  }
 
   /* ---- S12/S13: 2カラム ---- */
-  .testimonials,
   .benefits-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1638,16 +1739,41 @@ footer {
   .testimonials-section .section-title {
     font-size: 38px;
   }
+  /* 2カラムグリッド(3枚だと1枚が浮く)をやめ、中央の縦ラインに数珠つなぎの1カラムに */
   .testimonials {
-    width: min(1120px, calc(100% - 64px));
+    display: block;
+    position: relative;
+    width: min(680px, calc(100% - 64px));
     margin: 0 auto;
-    padding: 0;
-    gap: 28px;
+    padding: 0 0 0 44px;
+  }
+  .testimonials::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: rgba(85, 22, 31, 0.15);
   }
   .testimonial {
     gap: 22px;
     padding: 34px 30px;
     border-left-width: 4px;
+    margin-bottom: 32px;
+  }
+  .testimonial:last-child { margin-bottom: 0; }
+  .testimonial::after {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 38px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--c-primary);
+    box-shadow: 0 0 0 4px var(--c-bg-cream);
+    z-index: 1;
   }
   .testimonial::before {
     top: 16px;
@@ -1684,10 +1810,6 @@ footer {
   }
   .benefits-section .section-title {
     font-size: 44px;
-  }
-  .benefits-section .section-sub {
-    font-size: 16px;
-    margin-top: 14px;
   }
   .benefits-list {
     width: min(960px, calc(100% - 64px));
@@ -1748,6 +1870,22 @@ footer {
     padding: 0;
     width: 100%;
   }
+  .voices-track {
+    gap: 22px;
+    padding-bottom: 32px;
+  }
+  .voice-card {
+    flex-basis: 336px;
+  }
+  .voice-card__photo {
+    height: 246px;
+  }
+  .voice-card__body {
+    padding: 24px;
+  }
+  .voice-card__program {
+    font-size: 11px;
+  }
 
   /* ---- S9 メディア掲載: 4列 ---- */
   .credibility-section .section-title { font-size: 38px; }
@@ -1784,17 +1922,20 @@ footer {
   .media-logo { height: 54px; }
 
   /* ---- S5 循環図: 左に図、右に説明 ---- */
+  /* fr単位のみで組む（vwや固定px幅と混在させない）。
+     どちらの列も「自分の列の中で100%」なので、画面幅に関わらず
+     説明文が列からはみ出して見切れることがない。 */
   .cycle-section {
     display: grid;
-    grid-template-columns: minmax(0, 50vw) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
     align-items: center;
-    column-gap: 0;
-    padding: 72px var(--px) 72px 96px;
+    column-gap: 48px;
+    padding: 72px 64px;
   }
   .cycle-diagram {
     padding: 0;
-    width: 50vw;
-    margin-left: 12px;
+    width: 100%;
+    margin: 0;
   }
   .cycle-diagram img {
     width: 100%;
@@ -1802,14 +1943,18 @@ footer {
     margin: 0;
   }
   .cycle-caption {
-    margin: 0 0 0 6vw;
-    padding: 28px 22px;
-    width: 450px;
+    margin: 0;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 640px;
     justify-self: start;
+  }
+  .cycle-caption__lead {
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
   .cycle-caption__lead span {
     display: block;
-    white-space: nowrap;
   }
   .roadmap-lead { padding: 22px 40px; }
 
@@ -1837,10 +1982,14 @@ footer {
 
   /* ---- S1 FV: コピーとCTAを主役サイズに ---- */
   .fv__title { font-size: 60px; }
-  .fv__subtitle { font-size: 17px; }
-  .fv__btn { max-width: 400px; padding: 22px 40px 29px; }
-  .fv__btn-badge { font-size: 13px; }
-  .fv__btn-main { font-size: 22px; }
+  .fv__lead { font-size: 20px; margin-top: 14px; }
+  .fv__subtitle { font-size: 15px; margin-top: 14px; }
+  .fv__progress-current { font-size: 34px; }
+  .fv__progress-total { font-size: 15px; }
+  .fv__progress-remain { font-size: 14px; }
+  .fv__btn { max-width: 340px; padding: 20px 36px 26px; }
+  .fv__btn-badge { font-size: 12px; }
+  .fv__btn-main { font-size: 21px; }
 
   /* ---- S2 導入動画: 全幅化による巨大化を防ぎ中央に ---- */
   .story--before .story__photo--before { max-width: 100%; }
