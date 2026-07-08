@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>EdFuture Founding Partners 100 | 挑戦の循環を支える100人</title>
   <meta name="description" content="挑戦が次の挑戦を生む社会へ。EdFutureは、若者の海外挑戦を支える最初の100人の仲間を募集しています。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
+  <link rel="canonical" href="https://edfuture.jp/kifu/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://edfuture.jp/kifu/">
   <meta property="og:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
   <meta property="og:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
-  <meta property="og:image" content="images/ogp.webp">
+  <meta property="og:image" content="https://edfuture.jp/kifu/images/ogp.jpg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
   <meta property="og:site_name" content="NPO法人EdFuture">
@@ -20,12 +28,42 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
   <meta name="twitter:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から。">
-  <meta name="twitter:image" content="images/ogp.webp">
+  <meta name="twitter:image" content="https://edfuture.jp/kifu/images/ogp.jpg">
 
+  <link rel="preload" as="image" href="images/01_fv.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- フォントCSSは非同期読み込み（レンダーブロック回避）。display=swap のため最終的な見た目は同一 -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "NPO法人EdFuture",
+    "url": "https://edfuture.jp/",
+    "logo": "https://edfuture.jp/kifu/images/favicon-192x192.png",
+    "foundingDate": "2023-01-16",
+    "founder": { "@type": "Person", "name": "中村 柾" },
+    "email": "info@edfuture2022.org",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "270-2224",
+      "addressRegion": "千葉県",
+      "addressLocality": "松戸市",
+      "streetAddress": "大橋280番地の6",
+      "addressCountry": "JP"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=100063545013511",
+      "https://x.com/npo_edfuture",
+      "https://www.instagram.com/npo_edfuture/"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -65,8 +103,8 @@
   <!-- S2: BEFORE -->
   <section class="story story--before" id="story-before">
     <div class="story__photo story__photo--before">
-      <video src="images/09.mp4" class="story__photo--before-video--sp-only" autoplay muted playsinline loop></video>
-      <video src="images/01_fv.mp4" class="story__photo--before-video--pc-only" autoplay muted playsinline loop></video>
+      <video data-src="images/09.mp4" class="story__photo--before-video--sp-only" autoplay muted playsinline loop preload="none"></video>
+      <video data-src="images/01_fv.mp4" class="story__photo--before-video--pc-only" autoplay muted playsinline loop preload="none"></video>
     </div>
     <div class="story__quote js-reveal">
       <blockquote>その一歩は、支援者の寄付から始まった。</blockquote>
@@ -78,19 +116,19 @@
   <section class="story story--during" id="story-during">
     <div class="story__moments">
       <div class="story__moment js-reveal">
-        <img src="images/kuko.webp" class="story__moment-img" alt="" loading="lazy" decoding="async">
+        <img src="images/kuko.webp" srcset="images/kuko_1024.webp 1024w, images/kuko.webp 2048w" sizes="100vw" class="story__moment-img" alt="" loading="lazy" decoding="async">
         <p class="story__moment-caption">羽田空港でアメリカという国を想像して心躍った。</p>
       </div>
       <div class="story__moment js-reveal">
-        <video src="images/04.mp4" class="story__moment-img" poster="images/004.webp" autoplay muted loop playsinline></video>
+        <video data-src="images/04.mp4" class="story__moment-img" poster="images/004.webp" autoplay muted loop playsinline preload="none"></video>
         <p class="story__moment-caption">はっきり言葉にしないと伝わらない。ここでは全て自分の行動次第なのだと気づいた。</p>
       </div>
       <div class="story__moment js-reveal">
-        <video src="images/01.mp4" class="story__moment-img" poster="images/001.webp" autoplay muted loop playsinline style="filter: brightness(1.25)"></video>
+        <video data-src="images/01.mp4" class="story__moment-img" poster="images/001.webp" autoplay muted loop playsinline preload="none" style="filter: brightness(1.25)"></video>
         <p class="story__moment-caption">アンケートの回答数を見て、初めて自信がついた。興味分野である探求の面白さを知った。</p>
       </div>
       <div class="story__moment js-reveal">
-        <img src="images/zenji.webp" class="story__moment-img" alt="" loading="lazy" decoding="async" style="object-position: center 30%;">
+        <img src="images/zenji.webp" srcset="images/zenji_1024.webp 1024w, images/zenji.webp 2048w" sizes="100vw" class="story__moment-img" alt="" loading="lazy" decoding="async" style="object-position: center 30%;">
         <p class="story__moment-caption">最終日、互いに涙してバディと感謝を伝えあった。</p>
       </div>
     </div>
@@ -255,14 +293,14 @@
       <h2 class="section-title section-title--dark stories-title"><span>これまでに<strong>184人</strong>の</span><br><span>若者に機会を届けてきました</span></h2>
     </div>
     <div class="story-photos">
-      <img src="images/01.webp" alt="" loading="lazy">
-      <img src="images/02.webp" alt="" loading="lazy">
-      <img src="images/03.webp" alt="" loading="lazy">
-      <img src="images/04.webp" alt="" loading="lazy">
-      <img src="images/05.webp" alt="" loading="lazy">
-      <img src="images/06.webp" alt="" loading="lazy">
-      <img src="images/07.webp" alt="" loading="lazy">
-      <img src="images/08.webp" alt="" loading="lazy">
+      <img src="images/01.webp" srcset="images/01_640.webp 640w, images/01_1024.webp 1024w, images/01.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/02.webp" srcset="images/02_640.webp 640w, images/02_1024.webp 1024w, images/02.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/03.webp" srcset="images/03_640.webp 640w, images/03_1024.webp 1024w, images/03.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/04.webp" srcset="images/04_640.webp 640w, images/04_1024.webp 1024w, images/04.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/05.webp" srcset="images/05_640.webp 640w, images/05_1024.webp 1024w, images/05.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/06.webp" srcset="images/06_640.webp 640w, images/06_1024.webp 1024w, images/06.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/07.webp" srcset="images/07_640.webp 640w, images/07_1024.webp 1024w, images/07.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
+      <img src="images/08.webp" srcset="images/08_640.webp 640w, images/08_1024.webp 1024w, images/08.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
     </div>
     <div class="voices-track js-reveal">
 

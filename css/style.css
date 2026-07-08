@@ -309,6 +309,9 @@ strong { font-weight: 700; }
   pointer-events: none;
 }
 .story--before .story__photo--before video.story__photo--before-video--pc-only { display: none; } /* SP既定では非表示。PCでのみ min-width 内で入れ替える */
+/* 遅延読み込み動画のメタデータ到着前に正しい高さを確保する（比率は各動画の実寸と同一） */
+.story--before .story__photo--before video.story__photo--before-video--sp-only { aspect-ratio: 3 / 4; }
+.story--before .story__photo--before video.story__photo--before-video--pc-only { aspect-ratio: 16 / 9; }
 .story--during { padding-top: 0; }
 .story--after { padding-top: 0; padding-bottom: 0; }
 

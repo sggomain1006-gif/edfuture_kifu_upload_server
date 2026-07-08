@@ -15,6 +15,57 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.js-reveal').forEach((el) => revealObserver.observe(el));
 
 /* ===========================
+   LAZY VIDEO LOADING
+   data-src の動画をビューポート接近時にのみ読み込む。
+   display:none の動画（SP/PC出し分けの非表示側）は交差しないため
+   読み込まれず、無駄な転送が発生しない。
+=========================== */
+const lazyVideos = document.querySelectorAll('video[data-src]');
+if (lazyVideos.length > 0) {
+  const loadVideo = (video) => {
+    if (!video.dataset.src || video.src) return;
+    video.src = video.dataset.src;
+    video.removeAttribute('data-src');
+    video.load();
+    const tryPlay = () => {
+      const playPromise = video.play();
+      if (playPromise) playPromise.catch(() => {});
+    };
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay, { once: true });
+    }
+  };
+
+  const startObserving = () => {
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            loadVideo(entry.target);
+            observer.unobserve(entry.target);
+          });
+        },
+        { rootMargin: '600px 0px 600px 0px' }
+      );
+      lazyVideos.forEach((video) => videoObserver.observe(video));
+    } else {
+      lazyVideos.forEach(loadVideo);
+    }
+  };
+
+  // FV画像・フォント等の初期リソースと帯域を奪い合わないよう、
+  // 動画の読み込み開始は window load 後にする
+  if (document.readyState === 'complete') {
+    startObserving();
+  } else {
+    window.addEventListener('load', startObserving, { once: true });
+  }
+}
+
+/* ===========================
    FV COUNT UP
 =========================== */
 const progressNum = document.getElementById('progressNum');

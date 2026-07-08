@@ -1,0 +1,38 @@
+# EdFuture 寄付LP (/kifu/) 用 .htaccess
+# 注意: 本番 (edfuture.jp) は nginx がフロントに立っている。
+# バックエンドが Apache の場合のみ有効（IfModule ガード付きのため他環境では無害）。
+# nginx 単体構成の場合は同等の設定をサーバー側で行うこと（最終報告参照）。
+
+# --- テキスト圧縮 ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- キャッシュ制御 ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML は都度検証（更新が即時反映されるように）
+  ExpiresByType text/html "access plus 0 seconds"
+  # 静的アセットは長期キャッシュ
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# --- セキュリティヘッダー ---
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # 埋め込み不可（クリックジャッキング対策）
+  Header set Content-Security-Policy "frame-ancestors 'self'"
+</IfModule>
+
+# --- 不要ファイルへのアクセス拒否 ---
+<FilesMatch "\.(md|sh|py|json|lock)$">
+  Require all denied
+</FilesMatch>
