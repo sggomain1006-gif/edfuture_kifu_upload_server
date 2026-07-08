@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>EdFuture Founding Partners 100 | 挑戦の循環を支える100人</title>
+  <meta name="description" content="挑戦が次の挑戦を生む社会へ。EdFutureは、若者の海外挑戦を支える最初の100人の仲間を募集しています。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
+  <meta property="og:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
+  <meta property="og:image" content="images/ogp.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:site_name" content="NPO法人EdFuture">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
+  <meta name="twitter:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から。">
+  <meta name="twitter:image" content="images/ogp.webp">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -14,25 +32,21 @@
   <!-- S1: FV -->
   <section class="fv" id="fv">
     <div class="fv__bg">
-      <img src="images/1_fv.webp" alt="挑戦する高校生たち" class="fv__bg-img" decoding="async" fetchpriority="high">
-      <div class="fv__overlay"></div>
-      <img src="images/1_fv_kirinuki.webp" alt="" class="fv__kirinuki" decoding="async" fetchpriority="high">
+      <img src="images/01_fv.webp" alt="挑戦する高校生たち" class="fv__bg-img" decoding="async" fetchpriority="high">
     </div>
     <div class="fv__copy">
       <h1 class="fv__title">挑戦は、<br>次の挑戦へ。</h1>
       <p class="fv__subtitle">ー挑戦の循環を作る最初の100人</p>
     </div>
     <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="fv__btn">
-      <span class="fv__btn-text">最初の100人になる</span>
+      <span class="fv__btn-badge">\ 月1000円〜寄付する /</span>
+      <span class="fv__btn-main">最初の100人になる</span>
     </a>
-    <div class="fv__progress">
-      <div class="fv__progress-nums">
-        現在 <strong class="fv__progress-current" id="progressNum">38</strong>人 ／ 目標 <strong>100</strong>人
-      </div>
-      <div class="fv__progress-bar">
-        <div class="fv__progress-fill" id="progressFill"></div>
-        <p class="fv__progress-remain">あと<strong id="progressRemain">62</strong>人で達成！</p>
-      </div>
+    <div class="fv__progress" aria-label="Founding Partners 100の参加状況">
+      <span class="fv__progress-count">
+        <span class="fv__progress-label">現在</span>
+        <strong class="fv__progress-current" id="progressNum">0</strong><span class="fv__progress-unit">人</span>
+      </span>
     </div>
   </section>
 
@@ -168,7 +182,7 @@
   <!-- S7: STORIES -->
   <section class="stories-section" id="stories">
     <div class="section-head">
-      <h2 class="section-title section-title--dark">これまでに<strong>184人</strong>の<br>若者に機会を届けてきました</h2>
+      <h2 class="section-title section-title--dark stories-title"><span>これまでに<strong>184人</strong>の</span><br><span>若者に機会を届けてきました</span></h2>
     </div>
     <div class="story-photos">
       <img src="images/01.webp" alt="" loading="lazy">
@@ -397,7 +411,7 @@
   <section class="benefits-section" id="benefits">
     <div class="section-head">
       <p class="section-label">Founding Partners限定</p>
-      <h2 class="section-title section-title--dark">循環の一員であるあなたへ</h2>
+      <h2 class="section-title section-title--dark benefits-title">循環の一員であるあなたへ</h2>
     </div>
     <div class="benefits-list">
       <div class="benefit-card js-reveal">
@@ -455,7 +469,7 @@
   <!-- S14: NPO ROADMAP -->
   <section class="roadmap-section" id="roadmap">
     <div class="section-head">
-      <h2 class="section-title section-title--dark">EdFutureも挑戦しています</h2>
+      <h2 class="section-title section-title--dark roadmap-title">EdFutureも挑戦しています</h2>
     </div>
 
     <p class="roadmap-lead js-reveal">EdFutureが届けているのは、若者の挑戦の機会だけではありません。<u>団体自身も挑戦の途中</u>にあります。</p>
@@ -480,7 +494,7 @@
     </div>
 
     <div class="roadmap-highlight js-reveal">
-      <p class="roadmap-highlight__text">認定NPO法人では、パブリックサポートテストという寄付者が毎年100人いることが継続の条件になります。<br><strong>EdFuture Founding Partners 100になっていただくと、EdFutureの挑戦も応援してもらえることになります。</strong></p>
+      <p class="roadmap-highlight__text">認定NPO法人では、パブリックサポートテストという寄付者が毎年100人いることが継続の条件になります。<br><strong>EdFuture Founding Partners 100になっていただくと、EdFutureの挑戦も応援して頂けることになります。</strong></p>
     </div>
   </section>
 
@@ -548,8 +562,10 @@
       <img src="images/311.webp" alt="" class="final-cta__bg-img" loading="lazy" decoding="async">
       <div class="final-cta__overlay"></div>
     </div>
+    <div class="final-cta__frame" aria-hidden="true"></div>
     <div class="final-cta__content js-reveal">
       <h2 class="final-cta__title"><span>世界を広げる一歩を、</span><span>一緒につくりませんか？</span></h2>
+      <div class="final-cta__glow" aria-hidden="true"></div>
       <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="final-cta__btn">
         <span class="final-cta__btn-badge">\ Founding Partners 100 /</span>
         <span class="final-cta__btn-text"><span class="final-cta__btn-num">39</span>/<span class="final-cta__btn-num-total">100</span>人目の仲間になる</span>

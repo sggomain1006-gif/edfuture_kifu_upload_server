@@ -15,47 +15,44 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.js-reveal').forEach((el) => revealObserver.observe(el));
 
 /* ===========================
-   FV BUTTON POSITIONING
+   FV COUNT UP
 =========================== */
-(function positionFvBtn() {
-  const btn = document.querySelector('.fv__btn');
-  const progress = document.querySelector('.fv__progress');
-  if (!btn || !progress) return;
+const progressNum = document.getElementById('progressNum');
+if (progressNum) {
+  const target = 38;
+  const duration = 3000;
+  let started = false;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let frameId;
-  const update = () => {
-    cancelAnimationFrame(frameId);
-    frameId = requestAnimationFrame(() => {
-      btn.style.bottom = (progress.offsetHeight + 12) + 'px';
-    });
-  };
-  window.addEventListener('load', update);
-  window.addEventListener('resize', update);
-})();
+  const easeOutCubic = (progress) => 1 - Math.pow(1 - progress, 3);
 
-/* ===========================
-   PROGRESS BAR ANIMATION
-=========================== */
-const CURRENT = 38;
-const GOAL = 100;
-const PERCENT = Math.round((CURRENT / GOAL) * 100);
+  if (reduceMotion) {
+    progressNum.textContent = target;
+  }
 
-const progressFill = document.getElementById('progressFill');
-const progressRemain = document.getElementById('progressRemain');
+  const countObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || started || reduceMotion) return;
+        started = true;
+        const startTime = performance.now();
 
-const progressObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      if (progressFill) progressFill.style.width = PERCENT + '%';
-      if (progressRemain) progressRemain.textContent = GOAL - CURRENT;
-      observer.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.5 }
-);
+        const tick = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = easeOutCubic(progress);
+          progressNum.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
 
-if (progressFill) progressObserver.observe(progressFill.closest('.fv__progress'));
+        requestAnimationFrame(tick);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  if (!reduceMotion) countObserver.observe(progressNum);
+}
 
 /* ===========================
    FAQ ACCORDION
