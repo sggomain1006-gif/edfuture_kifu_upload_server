@@ -71,7 +71,7 @@ if (lazyVideos.length > 0) {
 const progressNum = document.getElementById('progressNum');
 const progressRemain = document.getElementById('progressRemain');
 if (progressNum) {
-  const target = 38;
+  const target = 97;
   const total = 100;
   const duration = 3000;
   if (progressRemain) progressRemain.textContent = total - target;
@@ -82,6 +82,10 @@ if (progressNum) {
 
   if (reduceMotion) {
     progressNum.textContent = target;
+  } else {
+    // HTML初期値は真値(97)＝JS無効環境向け。アニメーション時はカウントアップ開始前に0へ戻す
+    // （deferスクリプトは初回描画前に実行されるため見た目のカウント演出は従来どおり）
+    progressNum.textContent = '0';
   }
 
   const countObserver = new IntersectionObserver(
@@ -164,21 +168,6 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 /* ===========================
-   SMOOTH ANCHOR SCROLL
-=========================== */
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    const href = link.getAttribute('href');
-    if (!href || href === '#') return;
-    const target = document.querySelector(href);
-    if (!target) return;
-    e.preventDefault();
-    const top = target.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-});
-
-/* ===========================
    STORY LINE STAGGER
    (re-trigger if lines appear grouped)
 =========================== */
@@ -205,12 +194,20 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
   const track = document.querySelector(selector);
   if (!track) return;
 
+  // モーション低減設定時は自動送りしない（手動スクロールは可能なまま）
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const originals = Array.from(track.children);
   const total = originals.length;
   if (total < 2) return;
 
-  track.insertBefore(originals[total - 1].cloneNode(true), track.firstChild);
-  originals.forEach((card) => track.appendChild(card.cloneNode(true)));
+  const makeClone = (card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true'); // ループ用クローンをSRの二重読み上げ対象から外す
+    return clone;
+  };
+  track.insertBefore(makeClone(originals[total - 1]), track.firstChild);
+  originals.forEach((card) => track.appendChild(makeClone(card)));
 
   const prepend = 1;
   let current = prepend;
@@ -218,8 +215,30 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
   let isPaused = false;
   let timer;
 
+  // PC(≥768px)の全幅カルーセルで、両端に出る見切れカードが常に50%以上見えるように
+  // 左右対称のピーク(部分表示)量を算出する。カード幅・比率は一切変えない。
+  // ピークは白余白ではなく前後カードの一部＝視覚的に「見切れ」だが50%以上を保証する。
+  function getPeekInset() {
+    const sample = track.children[prepend];
+    const cardW = sample.offsetWidth;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const vw = track.clientWidth;
+    // 中央に並べる「フル表示カード」の枚数nを、両端ピークがカード幅の50%以上に
+    // なる最大値まで増やす（＝見切れを最小化しつつ50%未満のスライバーを防ぐ）。
+    let n = 1;
+    while ((vw - (n + 1) * cardW - (n + 2) * gap) / 2 >= cardW / 2) n++;
+    let peek = (vw - n * cardW - (n + 1) * gap) / 2;
+    if (peek < 0) peek = 0;
+    return gap + peek; // カード左端をこの位置(x=inset)に置く＝左側にpeek分のカードが覗く
+  }
+
   function getCenteredScroll(index) {
     const card = track.children[index];
+    // PC: 全幅・1枚ずつ左送り。左右対称ピークで見切れ50%以上を担保。
+    // SP(<768px): 従来どおりアクティブカードを中央寄せ（挙動は不変）。
+    if (window.innerWidth >= 768) {
+      return card.offsetLeft - getPeekInset();
+    }
     return card.offsetLeft - ((track.clientWidth - card.offsetWidth) / 2);
   }
 
@@ -244,6 +263,9 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
   }
 
   function setInitialPosition() {
+    // 手動スワイプ時のスナップ基準(scroll-padding-left)もピーク量に合わせる。
+    // PCのみ。SPは中央寄せなので未設定(既定に戻す)。
+    track.style.scrollPaddingLeft = window.innerWidth >= 768 ? getPeekInset() + 'px' : '';
     scrollTo(current, false);
   }
 
@@ -254,12 +276,34 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
     scrollTo(current, true);
 
     setTimeout(() => {
-      if (current >= prepend + total) {
+      // タッチ操作中はループ巻き戻しの瞬間ジャンプを保留（再開時にsyncToScrollで正規化される）
+      if (!isPaused && current >= prepend + total) {
         current = prepend;
         scrollTo(current, false);
       }
       isAnimating = false;
     }, 420);
+  }
+
+  // 手動スワイプ後に実スクロール位置から現在インデックスを求め直す。
+  // クローン領域にいる場合は等価な本体カードへ瞬間ジャンプして正規化する（見た目は同一）。
+  function syncToScroll() {
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let nearest = prepend;
+    let bestDist = Infinity;
+    for (let i = 0; i < track.children.length; i++) {
+      const card = track.children[i];
+      const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+      if (dist < bestDist) { bestDist = dist; nearest = i; }
+    }
+    if (nearest < prepend) {
+      nearest += total;
+      scrollTo(nearest, false);
+    } else if (nearest >= prepend + total) {
+      nearest -= total;
+      scrollTo(nearest, false);
+    }
+    current = nearest;
   }
 
   function startTimer() {
@@ -268,8 +312,12 @@ document.querySelectorAll('.story__lines').forEach((block) => staggerObserver.ob
   }
 
   track.addEventListener('touchstart', () => { isPaused = true; clearInterval(timer); }, { passive: true });
-  track.addEventListener('touchend', () => { isPaused = false; startTimer(); });
-  window.addEventListener('resize', setInitialPosition);
+  track.addEventListener('touchend', () => {
+    syncToScroll();
+    isPaused = false;
+    startTimer();
+  });
+  window.addEventListener('resize', () => { if (!isPaused) setInitialPosition(); });
 
   setInitialPosition();
   startTimer();

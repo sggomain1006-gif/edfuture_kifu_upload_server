@@ -63,6 +63,15 @@ strong { font-weight: 700; }
 .story__line.js-reveal:nth-child(3) { transition-delay: 0.24s; }
 .story__line.js-reveal:nth-child(4) { transition-delay: 0.36s; }
 
+/* OSでモーション低減を設定したユーザーにはスライドイン演出を無効化（通常表示は不変） */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ===========================
    SECTION COMMON
 =========================== */
@@ -94,6 +103,7 @@ strong { font-weight: 700; }
 =========================== */
 .fv {
   position: relative;
+  height: 100vh;  /* svh非対応ブラウザ向けフォールバック */
   height: 100svh;
   overflow: hidden;
 }
@@ -328,6 +338,13 @@ strong { font-weight: 700; }
   padding: 12px 0;
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
+.story__line:not(.story__line--founding) {
+  font-size: clamp(15px, 4.1vw + 4px, 22px);
+  white-space: nowrap;
+}
+.story__line--founding {
+  font-size: clamp(14px, 3.4vw + 3px, 22px);
+}
 
 /* Story quote */
 .story__quote {
@@ -349,7 +366,6 @@ strong { font-weight: 700; }
 
 /* Story photo */
 .story__photo { width: 100%; height: 280px; overflow: hidden; position: relative; }
-.story__photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
 
 /* Story moments — 全幅パネル + 斜めつなぎ */
 .story__moments { padding: 0; display: flex; flex-direction: column; gap: 0; margin: 0; position: relative; isolation: isolate; overflow: hidden; }
@@ -383,6 +399,14 @@ strong { font-weight: 700; }
   color: rgba(255,255,255,0.95);
   font-style: italic;
   text-shadow: 0 1px 12px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.5);
+}
+@media (max-width: 767px) {
+  .story__moment-caption {
+    text-shadow:
+      0 2px 16px rgba(0,0,0,0.95),
+      0 4px 8px rgba(0,0,0,0.72),
+      0 0 2px rgba(0,0,0,0.95);
+  }
 }
 .story__moment:nth-child(2) .story__moment-caption,
 .story__moment:nth-child(4) .story__moment-caption {
@@ -616,7 +640,8 @@ strong { font-weight: 700; }
   left: 0;
   right: 0;
   height: 320px;
-  background-image: url('../images/DSC_4186.webp');
+  /* SPは1024w縮小版を配信（PCは desktop.css で従来の2048w版に上書き） */
+  background-image: url('../images/DSC_4186_1024.webp');
   background-size: 113% auto;
   background-repeat: no-repeat;
   background-position: right top;
@@ -739,8 +764,6 @@ strong { font-weight: 700; }
   bottom: 0; left: 0; right: 0;
   padding: 0 var(--px) 12px;
 }
-.founder-card__title-pc { display: none; } /* SP既定では非表示。PCでのみ min-width 内で表示する */
-.founder-card__msg-br { display: none; } /* SP既定では非表示。PCでのみ min-width 内で改行を追加する */
 .founder-card__meta {
   display: inline-block;
   margin: 0 0 22px -8px;
@@ -802,6 +825,73 @@ strong { font-weight: 700; }
 }
 .founder-card__message p:last-child { margin-bottom: 0; }
 
+@media (max-width: 767px) {
+  /* SP: 代表・COOとも「写真=上・本文=下」のダーク地スタックカードに統一（オーバーレイ廃止）。
+     両セクションは founder-section クラスを共有するため共通指定 */
+  .founder-section .founder-card { display: block; }
+  .founder-section .founder-card__photo-wrap {
+    width: auto;              /* 基底の width:100% を解除。これが無いとmargin分だけ右にはみ出して見切れる */
+    height: auto;
+    aspect-ratio: 4 / 3;
+    margin: 0 var(--px);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .founder-section .founder-card__photo {
+    transform: scale(1.15); /* フレーム内で115%に拡大（overflow:hiddenでクリップ） */
+    filter: brightness(1.04);
+  }
+  .founder-section .founder-card__overlay { display: none; }
+  .founder-section .founder-card__content {
+    position: static;
+    padding: 22px calc(var(--px) + 2px) 22px;
+  }
+  .founder-section .founder-card__meta {
+    display: block;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transform: none;
+    margin: 0 0 16px 0;
+    padding: 0;
+  }
+  .founder-section .founder-card__career { margin-left: 0; }
+  .founder-section .founder-card__message {
+    padding: 18px 0 0;
+    border-top-color: rgba(255,255,255,0.15);
+  }
+  .founder-section .founder-card__message p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  /* 写真は人物ごとに被写体を保持 */
+  #founder .founder-card__photo { object-position: center 20%; transform: scale(1.15) translateY(-4%); } /* 横長で縦はフル表示のためtranslateYで少し上へ */
+  #coo .founder-card__photo { object-position: 60% 32%; transform: scale(1.15); transform-origin: center bottom; } /* 拡大の起点を下端にし、画像の下をフレーム下部に合わせる（上側のみクリップ） */
+}
+
+/* ---- 代表＋COOを束ねるセクション見出し（両セクション上部・PC/SP共通） ---- */
+.voices-head {
+  text-align: center;
+  padding: 48px var(--px) 30px; /* SPは見出しと代表写真の間に余白を確保。PCはdesktop.cssで別指定 */
+}
+.voices-title {
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  color: var(--c-accent);
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ---- 代表・COOは共通のスタックカード（上のSP共通ブロック参照）。ここはCOO固有の間隔のみ ---- */
+.coo-section { margin-top: 0; } /* 代表直下に密着（founder-sectionの-32px重ねを打ち消す） */
+
+@media (max-width: 767px) {
+  .coo-section { padding-top: 26px; } /* 代表カードとCOO写真の間に区切りの余白 */
+}
+
 /* ===========================
    S9: CREDIBILITY
 =========================== */
@@ -814,7 +904,8 @@ strong { font-weight: 700; }
   margin-bottom: 40px;
 }
 .number-card {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   background: var(--c-primary);
   border-radius: var(--radius);
   padding: 20px 12px;
@@ -828,8 +919,34 @@ strong { font-weight: 700; }
   line-height: 1.1;
 }
 .number-card__val span { font-size: 16px; }
+.number-card__unit--wide {
+  display: block;
+  font-size: clamp(11px, 3.4vw, 16px);
+  white-space: nowrap;
+}
 .number-card__label { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 6px; line-height: 1.5; white-space: nowrap; }
 .number-card__label--lower { margin-top: 16px; }
+
+@media (max-width: 767px) {
+  .number-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .number-card__val {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .number-card__unit--wide {
+    flex-basis: 100%;
+  }
+  .number-card__label {
+    font-size: clamp(8px, 2.35vw, 11px);
+  }
+}
 .endorsements { padding: 0 var(--px); margin-bottom: 36px; }
 .endorsements__title {
   font-size: 18px; font-weight: 700; color: var(--c-primary);
@@ -887,9 +1004,8 @@ strong { font-weight: 700; }
 .impact-hero__img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: left 30%;
-  transform: scale(1.12);
-  transform-origin: left center;
+  object-position: 65% 30%;
+  transform: scale(1.1);
   filter: brightness(1.28);
 }
 .impact-hero__overlay {
@@ -923,6 +1039,7 @@ strong { font-weight: 700; }
   font-size: 14px;
   color: rgba(255,255,255,0.75);
   line-height: 1.9;
+  text-align: center;
   padding: 32px 0 28px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -988,6 +1105,7 @@ strong { font-weight: 700; }
 }
 .impact-tier__result strong { font-size: 22px; color: var(--c-accent); font-weight: 800; }
 .impact-tier__desc { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-top: 10px; }
+.impact-tier__note { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 8px; }
 
 
 /* ===========================
@@ -1139,6 +1257,8 @@ strong { font-weight: 700; }
 .benefits-section { background: var(--c-bg-light); padding-bottom: 56px; }
 .benefits-section .section-head { background: var(--c-bg-light); }
 .benefits-title { white-space: nowrap; }
+.benefits-title__pc { display: none; }
+.benefits-title__sp { display: inline; }
 .benefits-list { padding: 0 var(--px); display: flex; flex-direction: column; gap: 16px; }
 .benefit-card { display: flex; flex-direction: column; gap: 12px; background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
 .benefit-card__head { display: flex; align-items: center; gap: 14px; }
@@ -1313,6 +1433,22 @@ strong { font-weight: 700; }
 }
 .roadmap-highlight__text strong { color: var(--c-accent); }
 
+@media (max-width: 767px) {
+  .roadmap-highlight {
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 16px 8px;
+  }
+  .roadmap-highlight__text {
+    font-size: clamp(10px, 3vw, 13px);
+    line-height: 1.65;
+  }
+  .roadmap-highlight__line {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
 /* ===========================
    S15: FAQ
 =========================== */
@@ -1344,7 +1480,13 @@ strong { font-weight: 700; }
 .faq-a {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  /* 閉状態では中のリンクをフォーカス・読み上げ対象から外す（開閉アニメーションの見た目は同一） */
+  visibility: hidden;
+  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.35s;
+}
+.faq-item.is-open .faq-a {
+  visibility: visible;
+  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0s;
 }
 .faq-a p {
   padding: 0 0 20px;
@@ -1403,14 +1545,25 @@ strong { font-weight: 700; }
   position: absolute;
   inset: 0;
   z-index: 2;
-  padding: 56px var(--px);
+  padding: 56px var(--px) 40px;
   text-align: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+.final-cta__btn-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .final-cta__glow {
   position: absolute;
   left: 50%;
-  bottom: 92px;
+  bottom: -20px;
   transform: translateX(-50%);
   width: 300px;
   height: 130px;
@@ -1420,11 +1573,7 @@ strong { font-weight: 700; }
   z-index: 0;
 }
 .final-cta__title {
-  position: absolute;
-  top: 53%;
-  left: var(--px);
-  right: var(--px);
-  transform: translateY(-50%);
+  position: relative;
   font-family: var(--ff-serif);
   font-size: min(32px, 8.2vw);
   font-weight: 700;
@@ -1448,10 +1597,8 @@ strong { font-weight: 700; }
   white-space: nowrap;
 }
 .final-cta__btn {
-  position: absolute;
-  left: var(--px);
-  right: var(--px);
-  bottom: 72px;
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1587,6 +1734,22 @@ footer {
 }
 .footer-about dd a:hover { opacity: 0.7; }
 .footer-about__ext {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.faq-a__link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.faq-a__link:hover { opacity: 0.7; }
+.faq-a__ext {
   width: 11px;
   height: 11px;
   flex-shrink: 0;

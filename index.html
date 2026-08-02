@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4YZWQ5XL9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-K4YZWQ5XL9');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xkjlqer51c");
+  </script>
+
   <title>EdFuture Founding Partners 100 | 挑戦の循環を支える100人</title>
-  <meta name="description" content="挑戦が次の挑戦を生む社会へ。EdFutureは、若者の海外挑戦を支える最初の100人の仲間を募集しています。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
+  <meta name="description" content="挑戦が次の挑戦を生む社会へ。EdFutureは、学生の海外挑戦を支える最初の100人の仲間を募集しています。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
   <link rel="canonical" href="https://edfuture.jp/kifu/">
 
   <!-- Favicon -->
@@ -17,7 +37,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://edfuture.jp/kifu/">
   <meta property="og:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
-  <meta property="og:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
+  <meta property="og:description" content="挑戦が次の挑戦を生む社会へ。学生の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から、あなたの寄付が次の挑戦者の一歩をつくります。">
   <meta property="og:image" content="https://edfuture.jp/kifu/images/ogp.jpg">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
@@ -27,7 +47,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EdFuture Founding Partners 100 | 挑戦の循環を支える100人">
-  <meta name="twitter:description" content="挑戦が次の挑戦を生む社会へ。若者の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から。">
+  <meta name="twitter:description" content="挑戦が次の挑戦を生む社会へ。学生の海外挑戦を支える最初の100人の仲間を募集中。月1,000円から。">
   <meta name="twitter:image" content="https://edfuture.jp/kifu/images/ogp.jpg">
 
   <link rel="preload" as="image" href="images/01_fv.webp" fetchpriority="high">
@@ -37,11 +57,13 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260731c">
   <!-- PC専用ルールを別ファイル化。media属性が一致しないSPでは
        レンダリングをブロックしない（=不要CSSの読み込み遅延）。
        ルール内容はcss/style.cssの旧@media(min-width:768px)ブロックと同一 -->
-  <link rel="stylesheet" href="css/desktop.css" media="(min-width: 768px)">
+  <link rel="stylesheet" href="css/desktop.css?v=20260731c" media="(min-width: 768px)">
+  <!-- JS無効時もrevealアニメーション対象のコンテンツを表示する -->
+  <noscript><style>.js-reveal { opacity: 1; transform: none; }</style></noscript>
 
   <script type="application/ld+json">
   {
@@ -70,6 +92,7 @@
   </script>
 </head>
 <body>
+  <main>
 
   <!-- S1: FV -->
   <section class="fv" id="fv">
@@ -88,16 +111,16 @@
         <p class="fv__subtitle">挑戦の循環をつくる、最初の100人へ。</p>
       </div>
 
-      <div class="fv__progress" aria-label="Founding Partners 100の参加状況">
+      <div class="fv__progress" role="group" aria-label="Founding Partners 100の参加状況">
         <span class="fv__progress-count">
           <span class="fv__progress-label">現在</span>
-          <strong class="fv__progress-current" id="progressNum">0</strong><span class="fv__progress-total">/100人</span>
+          <strong class="fv__progress-current" id="progressNum">97</strong><span class="fv__progress-total">/100人</span>
         </span>
-        <span class="fv__progress-remain">あと<strong id="progressRemain">62</strong>人</span>
+        <span class="fv__progress-remain">あと<strong id="progressRemain">3</strong>人</span>
       </div>
 
       <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="fv__btn">
-        <span class="fv__btn-badge">\ 月1,000円から若者の挑戦を支える /</span>
+        <span class="fv__btn-badge">\ 月1,000円から学生の挑戦を支える /</span>
         <span class="fv__btn-main">最初の100人として参加する</span>
       </a>
     </div>
@@ -107,8 +130,8 @@
   <!-- S2: BEFORE -->
   <section class="story story--before" id="story-before">
     <div class="story__photo story__photo--before">
-      <video data-src="images/09.mp4" class="story__photo--before-video--sp-only" autoplay muted playsinline loop preload="none"></video>
-      <video data-src="images/01_fv.mp4" class="story__photo--before-video--pc-only" autoplay muted playsinline loop preload="none"></video>
+      <video data-src="images/09.mp4" class="story__photo--before-video--sp-only" autoplay muted playsinline loop preload="none" aria-hidden="true"></video>
+      <video data-src="images/01_fv.mp4" class="story__photo--before-video--pc-only" autoplay muted playsinline loop preload="none" aria-hidden="true"></video>
     </div>
     <div class="story__quote js-reveal">
       <blockquote>その一歩は、支援者の寄付から始まった。</blockquote>
@@ -124,11 +147,11 @@
         <p class="story__moment-caption">羽田空港でアメリカという国を想像して心躍った。</p>
       </div>
       <div class="story__moment js-reveal">
-        <video data-src="images/04.mp4" class="story__moment-img" poster="images/004_1600.webp" autoplay muted loop playsinline preload="none"></video>
+        <video data-src="images/04.mp4" class="story__moment-img" poster="images/004_1600.webp" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
         <p class="story__moment-caption">はっきり言葉にしないと伝わらない。ここでは全て自分の行動次第なのだと気づいた。</p>
       </div>
       <div class="story__moment js-reveal">
-        <video data-src="images/01.mp4" class="story__moment-img" poster="images/001_1600.webp" autoplay muted loop playsinline preload="none" style="filter: brightness(1.25)"></video>
+        <video data-src="images/01.mp4" class="story__moment-img" poster="images/001_1600.webp" autoplay muted loop playsinline preload="none" style="filter: brightness(1.25)" aria-hidden="true"></video>
         <p class="story__moment-caption">アンケートの回答数を見て、初めて自信がついた。興味分野である探求の面白さを知った。</p>
       </div>
       <div class="story__moment js-reveal">
@@ -164,8 +187,8 @@
     </div>
     <div class="cycle-caption js-reveal">
       <div class="cycle-caption__inner">
-        <p class="cycle-caption__lead"><span><strong>EdFuture Founding Partners 100</strong>は、</span><span>「挑戦が次の挑戦を生む社会」を広げる</span><span><em>最初の100人</em>を集めるプロジェクトです。</span></p>
-        <p class="cycle-caption__body">私たちが目指すのは、挑戦の機会を得た人がその経験を社会に還元し、次の世代の挑戦を支えていく「挑戦の循環」です。これまで184名の若者の背中を押してきましたが、地方にいたから、お金がなかったから、不登校だったから——など、挑戦できない理由は人それぞれです。そんな若者たちの「やってみたい」をEdFutureは後押しします。</p>
+        <p class="cycle-caption__lead"><span><strong>EdFuture Founding Partners 100</strong>は、</span><span>「挑戦が次の挑戦を生む社会」を広げる</span><span><em>最初の100人</em>を集める<span class="u-nowrap-word">プロジェクトです。</span></span></p>
+        <p class="cycle-caption__body">私たちが目指すのは、挑戦の機会を得た人がその経験を社会に還元し、次の世代の挑戦を支えていく「挑戦の循環」です。これまで232名の学生の背中を押してきましたが、地方にいたから、お金がなかったから、不登校だったから——など、挑戦できない理由は人それぞれです。そんな学生たちの「やってみたい」をEdFutureは後押しします。</p>
       </div>
     </div>
   </section>
@@ -175,7 +198,7 @@
     <div class="issue-head">
       <p class="section-label section-label--dark">日本の教育の現実</p>
       <h2 class="issue-lead">挑戦できないのではない。<br><em>機会がない。</em></h2>
-      <p class="issue-sub">生まれた環境が、挑戦の数を決めている。</p>
+      <p class="issue-sub">様々な理由が、挑戦の数を決めている。</p>
     </div>
 
     <div class="issue-cards">
@@ -272,7 +295,7 @@
   <section class="programs-section" id="programs">
     <div class="section-head">
       <h2 class="section-title">あなたの寄付が届く先</h2>
-      <p class="section-sub">費用・地域・経験の壁を取り払い、<br>すべての若者に「挑戦の入口」を届けます。</p>
+      <p class="section-sub">費用・地域・経験の壁を取り払い、<br>すべての学生に「挑戦の入口」を届けます。</p>
     </div>
 
     <div class="program-hero js-reveal">
@@ -284,7 +307,7 @@
           <p class="program-hero__lead">経済的・手続き的ハードルを最小限にし、現地学生とのバディ制度によるリアルな異文化交流を通じて探究型学習とグローバルな視点を育む短期海外留学プログラム。参加者は国際的な現場を舞台に自らの問いに挑み、将来の進路選択にもつながるインスピレーションを得られます。</p>
         </div>
         <div class="program-hero__details">
-          <p class="program-hero__text">ワールド寺子屋留学プログラムでは、様々な事情のある若者が「海外へ一歩踏みだす」ことを後押しするため、奨学金制度を設けています。頂いたご寄付は、プログラム運営費として、渡航費・現地での学び・事前事後のサポートなど、若者の挑戦に必要な機会づくりに<strong>100%活用</strong>されます。</p>
+          <p class="program-hero__text">ワールド寺子屋留学プログラムでは、様々な事情のある学生が「海外へ一歩踏みだす」ことを後押しするため、奨学金制度を設けています。頂いたご寄付は、プログラム運営費として、渡航費・現地での学び・事前事後のサポートなど、学生の挑戦に必要な機会づくりに<strong>100%活用</strong>されます。</p>
         </div>
       </div>
     </div>
@@ -294,7 +317,7 @@
   <!-- S7: STORIES -->
   <section class="stories-section" id="stories">
     <div class="section-head">
-      <h2 class="section-title section-title--dark stories-title"><span>これまでに<strong>184人</strong>の</span><br><span>若者に機会を届けてきました</span></h2>
+      <h2 class="section-title section-title--dark stories-title"><span>これまでに<strong>232人</strong>の</span><br><span>学生に機会を届けてきました</span></h2>
     </div>
     <div class="story-photos">
       <img src="images/01.webp" srcset="images/01_640.webp 640w, images/01_1024.webp 1024w, images/01.webp 2048w" sizes="25vw" alt="" loading="lazy" decoding="async">
@@ -313,7 +336,7 @@
         <div class="voice-card__body">
           <p class="voice-card__program">ワールド寺子屋 2023 / サンフランシスコ</p>
           <blockquote class="voice-card__quote">高校最後の春、経済的な理由で一度は諦めた留学に挑戦することができました。海外経験だけなく、「自分にも挑戦できる」という自信と、切磋琢磨しながら応援し合える仲間を得ました。参加後はEdFutureスタッフとして挑戦を支える側になりました。その後、トビタテ留学JAPANの制度を活用し、デンマークに長期留学、今はインドネシアで国連インターンに参加しています。海外経験も英語力もなかった私の最初の一歩を後押ししてくださった皆さんに心から感謝しています。</blockquote>
-          <p class="voice-card__name">Hanon さん（高校3年生・東京都）</p>
+          <p class="voice-card__name">H.N さん（参加時高校3年生・東京都）</p>
         </div>
       </div>
 
@@ -322,16 +345,34 @@
         <div class="voice-card__body">
           <p class="voice-card__program">ワールド寺子屋 2025 / サンフランシスコ</p>
           <blockquote class="voice-card__quote">「お金がないから海外なんて無理。」そう思っていた私の背中を押してくれたのがEd Futureでした。経済的な理由で夢を諦めかけていた自分が、勇気を出して一歩踏み出せたのは、その支えのおかげです。サンフランシスコで出会った人々や文化、景色、そして触れた新しい価値観は、今も私の大切な財産で、挑戦を続ける原動力になっています。プログラム終了後は、地元北海道で会社を起業し、挑戦し続けています。次は自分が、誰かの背中を押せる存在になりたいです。</blockquote>
-          <p class="voice-card__name">Shun さん（高校2年生・北海道）</p>
+          <p class="voice-card__name">S.O さん（参加時高校2年生・北海道）</p>
         </div>
       </div>
 
       <div class="voice-card">
-        <div class="voice-card__photo" style="background-image:url('images/DSC_5230.webp'); background-position: center 30%;"></div>
+        <div class="voice-card__photo" style="background-image:url('images/yuina.webp'); background-position: center 30%;"></div>
         <div class="voice-card__body">
-          <p class="voice-card__program">アイルランドプログラム 2025</p>
-          <blockquote class="voice-card__quote">「地方に住んでいると、海外は遠い夢だと思っていた。奨学金があったから参加できた。この経験は一生の宝物。次は私が誰かの背中を押せる人になりたい。」</blockquote>
-          <p class="voice-card__name">R.T. さん（大学1年生・秋田県）</p>
+          <p class="voice-card__program">ワールド寺子屋 2023 / サンフランシスコ</p>
+          <blockquote class="voice-card__quote">島で育った私は、自分の価値観はまだ狭いと思っていました。だからこそ留学に憧れていましたが、費用や距離の問題から、海外へ行くことを諦めかけていました。そんな中、先生の紹介でワールド寺子屋に出会いました。親を説得し、審査を通過し、海外で自ら行動した経験、そして負けたくないと思える仲間との出会いは、挑戦することへの自信を与えてくれました。今でも仲間の存在が刺激となり、新しい挑戦を続ける原動力になっています。</blockquote>
+          <p class="voice-card__name">Y.T さん（参加時高校2年生・広島県）</p>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-card__photo" style="background-image:url('images/kana.webp'); background-position: center 25%;"></div>
+        <div class="voice-card__body">
+          <p class="voice-card__program">ワールド寺子屋 2022 / サンフランシスコ</p>
+          <blockquote class="voice-card__quote">高校3年生の私は、「世界は広い」と初めて知りました。写真や誰かの話では決して得られない、「自分で見て、感じること」がどれだけ貴重なのか。離島で育ち、夢を語ることにどこか遠慮していた私も、同じ熱量で応援し、一緒に悩み、夢を実現している大人や仲間に出会えました。4年後の今、私は児童養護施設で働いています。今の私の夢は、どんな状況にいる子どもたちにも希望を持ってもらうことです。いつか私も、あの時背中を押してくれたたくさんの大人の1人になりたいです。</blockquote>
+          <p class="voice-card__name">K.N さん（参加時高校3年生・鹿児島県）</p>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-card__photo" style="background-image:url('images/DSC_8262.webp'); background-position: center 48%;"></div>
+        <div class="voice-card__body">
+          <p class="voice-card__program">ワールド寺子屋 2026 / ボストン・ニューヨーク</p>
+          <blockquote class="voice-card__quote">英語に自信がなく、知らない環境へ飛び込むことに大きな不安がありましたが、「挑戦してみたい」という気持ちを大切にしているEdFutureに出会い、自分の可能性を信じて参加を決意しました。現地では積極的に質問や交流を重ねることで、自分から一歩踏み出す勇気の大切さを実感しました。参加後はまず挑戦してみることが自分の成長につながると考えるようになり、新しいことに前向きに取り組めるようになりました。この経験は今後さまざまなことに挑戦していく原動力になると感じています。</blockquote>
+          <p class="voice-card__name">S.A さん（参加時大学3年生・東京都）</p>
         </div>
       </div>
 
@@ -340,16 +381,15 @@
 
   <!-- S8: FOUNDER -->
   <section class="founder-section" id="founder">
-    <div class="section-head section-head--dark">
-      <h2 class="section-title">質の高い教育体験を、<br>全ての子どもへ</h2>
+    <div class="voices-head">
+      <h2 class="voices-title">質の高い教育体験を、<br>全ての学生へ</h2>
     </div>
     <div class="founder-card js-reveal">
       <div class="founder-card__photo-wrap">
-        <img src="images/DSC_2169.webp" alt="中村柾" class="founder-card__photo" loading="lazy" decoding="async">
+        <img src="images/daihyo.webp" alt="中村柾" class="founder-card__photo" loading="lazy" decoding="async">
       </div>
       <div class="founder-card__overlay"></div>
       <div class="founder-card__content">
-        <h2 class="founder-card__title-pc">質の高い教育体験を、<br>全ての子どもへ</h2>
         <div class="founder-card__meta">
           <p class="founder-card__role">NPO法人EdFuture 代表理事</p>
           <h3 class="founder-card__name">中村 柾</h3>
@@ -360,8 +400,33 @@
           </ul>
         </div>
         <div class="founder-card__message">
-          <p>海外で教育を学ぶほど、「どこで生まれ育ったか」で子どもの機会が決まってしまう現実に、強い危機感を抱きました。<br class="founder-card__msg-br">だからコロナ禍に「学びを止めない」という思いでEdFutureを立ち上げ、<br class="founder-card__msg-br">今も一人ひとりの「一歩を踏み出す」背中をそっと押しています。</p>
-          <p>住んでいる場所や家庭、国籍、ジェンダーに関わらず、<br class="founder-card__msg-br">「子どもが成長できる体験」を全ての子どもに。<br class="founder-card__msg-br">そのために、皆様の力が必要です。</p>
+          <p>EdFutureは、「どこにいても、どんな人でも挑戦する機会を届けたい」という想いで活動しています。これまでも多くの皆さまのご支援のおかげで、たくさんの挑戦する機会を届けることができましたが、さらにそのインパクトを大きくしていきたいと考えています。</p>
+          <p>プログラムを通して大きく成長していく参加者の姿を見るたびに、「挑戦する機会」の意味と一人ひとりが持つ可能性の大きさを実感しています。ぜひ皆さまにもその挑戦を支える仲間になっていただき、一人でも多くの「一歩踏み出す」機会を一緒につくっていただけたら嬉しいです。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8-b: COO MESSAGE -->
+  <section class="founder-section coo-section" id="coo">
+    <div class="founder-card js-reveal">
+      <div class="founder-card__photo-wrap">
+        <img src="images/coo.webp" alt="徳永悠馬" class="founder-card__photo" loading="lazy" decoding="async">
+      </div>
+      <div class="founder-card__overlay"></div>
+      <div class="founder-card__content">
+        <div class="founder-card__meta">
+          <p class="founder-card__role">NPO法人EdFuture COO</p>
+          <h3 class="founder-card__name">徳永 悠馬</h3>
+          <ul class="founder-card__career">
+            <li>世界経済フォーラム</li>
+            <li>Global Shapers Community Yokohama Hub Shaper</li>
+          </ul>
+        </div>
+        <div class="founder-card__message">
+          <p>活動を通して、経済的な理由や家庭の事情など、さまざまな背景を持つ学生たちが世界へ挑戦する姿を数多く見てきました。</p>
+          <p>どのような状況にあっても、一歩踏み出す勇気があれば未来は変えられる。そして、「すべての学生には自らの可能性を切り拓く力がある。」と私は本気で信じています。</p>
+          <p>皆様の想いを次の世代へ。未来へのバトンを、ぜひ一緒につないでいきませんか？</p>
         </div>
       </div>
     </div>
@@ -382,7 +447,7 @@
         <p class="number-card__label number-card__label--lower">が海外初体験</p>
       </div>
       <div class="number-card">
-        <p class="number-card__val">36<span>都道府県</span></p>
+        <p class="number-card__val">36<span class="number-card__unit--wide">都道府県</span></p>
         <p class="number-card__label number-card__label--lower">から参加</p>
       </div>
     </div>
@@ -411,7 +476,7 @@
         <img src="images/9_media3.webp" alt="NHK" class="media-logo" loading="lazy" decoding="async">
         <img src="images/9_media4.webp" alt="TBS" class="media-logo" loading="lazy" decoding="async">
         <img src="images/9_media5.webp" alt="教育新聞" class="media-logo" loading="lazy" decoding="async">
-        <img src="images/9_media6.webp" alt="the japan times alpa" class="media-logo" loading="lazy" decoding="async">
+        <img src="images/9_media6.webp" alt="The Japan Times Alpha" class="media-logo" loading="lazy" decoding="async">
         <img src="images/9_media7.webp" alt="朝日新聞EduA" class="media-logo" loading="lazy" decoding="async">
         <img src="images/9_media8.webp" alt="東洋経済" class="media-logo" loading="lazy" decoding="async">
       </div>
@@ -423,7 +488,7 @@
   <section class="impact-section" id="impact">
 
     <div class="impact-hero js-reveal">
-      <img src="images/411.webp" alt="プログラム参加者" class="impact-hero__img" loading="lazy" decoding="async">
+      <img src="images/imim.webp" srcset="images/imim_1024.webp 1024w, images/imim.webp 2048w" sizes="100vw" alt="プログラム参加者" class="impact-hero__img" loading="lazy" decoding="async">
       <div class="impact-hero__overlay"></div>
       <div class="impact-hero__text">
         <p class="impact-hero__label">次の挑戦者を迎えたい</p>
@@ -432,7 +497,7 @@
     </div>
 
     <div class="impact-body">
-      <p class="impact-body__lead js-reveal">この秋、グローバルプロジェクトの10月募集が始まります。来年度はアイルランドプログラムも構想中。奨学金制度（地方枠・無料枠）を整え、<strong>次の挑戦者を迎える準備</strong>をしています。</p>
+      <p class="impact-body__lead js-reveal">この秋、ワールド第5回寺子屋アメリカプログラムの募集が始まります。奨学金制度（地方枠・奨学生枠）を整え、<br><strong>次の挑戦者を迎える準備</strong>をしています。</p>
 
       <div class="impact-tiers">
 
@@ -444,6 +509,7 @@
           <div class="impact-tier__body">
             <p class="impact-tier__result">学生1人の、<br><strong>「渡航前の事前研修」</strong></p>
             <p class="impact-tier__desc">海外が初めての高校生が、事前研修を受けることで安心して渡航準備ができます。</p>
+            <p class="impact-tier__note">※事前研修では、VISAやESTA申請等の渡航準備サポートや現地で一緒に行動してくれるバディとの顔合わせ、現地での行動計画準備などを行っております。</p>
           </div>
         </div>
 
@@ -456,6 +522,7 @@
           <div class="impact-tier__body">
             <p class="impact-tier__result">学生1人の、<br><strong>「渡航先での10日間の活動費用」</strong></p>
             <p class="impact-tier__desc">高校生が、渡航先で名門大学や一流企業の訪問を通して、学びを深めることができます。</p>
+            <p class="impact-tier__note">※留学コースによってかかる費用は多少変動します。</p>
           </div>
         </div>
 
@@ -523,8 +590,8 @@
   <!-- S13: BENEFITS -->
   <section class="benefits-section" id="benefits">
     <div class="section-head">
-      <p class="section-label">Founding Partners限定</p>
-      <h2 class="section-title section-title--dark benefits-title">循環の一員であるあなたへ</h2>
+      <p class="section-label">挑戦を応援する最初の100人</p>
+      <h2 class="section-title section-title--dark benefits-title"><span class="benefits-title__pc">EdFuture Founding Partnerの皆様へ</span><span class="benefits-title__sp">Founding Partnersの皆様へ</span></h2>
     </div>
     <div class="benefits-list">
       <div class="benefit-card js-reveal">
@@ -563,7 +630,7 @@
           <h3 class="benefit-card__title">参加者・卒業生からのメッセージ</h3>
         </div>
         <div class="benefit-card__bottom">
-          <p class="benefit-card__desc">支援が届いた若者たちから、直接感謝のメッセージが届きます。</p>
+          <p class="benefit-card__desc">支援が届いた学生たちから、直接感謝のメッセージが届きます。</p>
           <div class="benefit-card__photo"><img src="images/uketoru.webp" alt="" loading="lazy" decoding="async"></div>
         </div>
       </div>
@@ -572,9 +639,9 @@
     <div class="benefits-capstone js-reveal">
       <div class="benefits-capstone__head">
         <span class="benefits-capstone__label">最大の<br>リターン</span>
-        <h3 class="benefits-capstone__title">社会的複利</h3>
+        <h3 class="benefits-capstone__title">支援が、次の挑戦を生む</h3>
       </div>
-      <p class="benefits-capstone__text">一般的な投資は元本とリターンが切り離れています。EdFutureの場合は、支援された若者が将来「支える側」に回ります。投資が次の投資を生む。これがEdFutureにしかない「<strong>社会的複利</strong>」です。</p>
+      <p class="benefits-capstone__text">一般的な投資では、元本とリターンは切り離されています。一方、EdFutureへの支援は、支援を受けた学生が将来「支える側」に回り、次の誰かの挑戦を後押ししていきます。一人への支援が、その人の挑戦を支え、やがて次の挑戦へとつながっていく。支援された学生が、今度は新たな挑戦者を支える。こうして挑戦の輪が広がり続けることが、EdFutureへの支援が生み出す最大の価値です。</p>
     </div>
   </section>
 
@@ -585,7 +652,7 @@
       <h2 class="section-title section-title--dark roadmap-title">EdFutureも挑戦しています</h2>
     </div>
 
-    <p class="roadmap-lead js-reveal">EdFutureが届けているのは、若者の挑戦の機会だけではありません。<br><u>団体自身も挑戦の途中</u>にあります。</p>
+    <p class="roadmap-lead js-reveal">EdFutureが届けているのは、学生の挑戦の機会だけではありません。<br><u>団体自身も挑戦の途中</u>にあります。</p>
 
     <div class="roadmap-timeline js-reveal">
       <div class="roadmap-step">
@@ -603,11 +670,11 @@
     </div>
 
     <div class="roadmap-note js-reveal">
-      <p class="roadmap-note__text">特例認定、そして認定NPO法人へ。認定NPO法人になると寄付者の税金が控除され、より寄付者が寄付をしやすい体制を整えることができます。<br><br>これは、若者に「やってみたい」を「やってみた」に変えてほしいと願うEdFuture自身が、同じように一歩ずつ挑戦を重ねている証です。</p>
+      <p class="roadmap-note__text">特例認定、そして認定NPO法人へ。認定NPO法人になると寄付者の税金が控除され、より寄付者が寄付をしやすい体制を整えることができます。<br><br>これは、学生に「やってみたい」を「やってみた」に変えてほしいと願うEdFuture自身が、同じように一歩ずつ挑戦を重ねている証です。</p>
     </div>
 
     <div class="roadmap-highlight js-reveal">
-      <p class="roadmap-highlight__text">認定NPO法人では、パブリックサポートテストという寄付者が毎年100人いることが継続の条件になります。<br><strong>EdFuture Founding Partners 100になっていただくと、EdFutureの挑戦も応援して頂けることになります。</strong></p>
+      <p class="roadmap-highlight__text"><span class="roadmap-highlight__line">認定NPO法人では、パブリックサポートテストという</span><span class="roadmap-highlight__line">寄付者が毎年100人いることが継続の条件になります。</span><br><strong><span class="roadmap-highlight__line">EdFuture Founding Partners 100になっていただくと、</span><span class="roadmap-highlight__line">EdFutureの挑戦も応援して頂けることになります。</span></strong></p>
     </div>
   </section>
 
@@ -618,53 +685,53 @@
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-1">
           <span>毎月の寄付を止めることはできますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>はい、いつでも解約・停止が可能です。手続きはメールでお気軽にご連絡ください。</p></div>
+        <div class="faq-a" id="faq-a-1"><p>はい、いつでも解約・停止が可能です。お手続には<a href="https://edfuture.jp/contact-page/" target="_blank" rel="noopener noreferrer" class="faq-a__link">お問い合わせ先<svg class="faq-a__ext" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3zm5 16H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2z"/></svg></a>からお気軽にご連絡ください。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2">
           <span>1回だけの寄付はできますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>はい、単発のご寄付も受け付けております。フォームよりご選択ください。</p></div>
+        <div class="faq-a" id="faq-a-2"><p>今回は挑戦の循環を支えるコミュニティを形成し、プログラム運営のための安定的なご支援を確保するため、誠に恐れ入りますが継続のご寄付のみとさせていただいております。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3">
           <span>領収書はもらえますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>ご寄付後に領収書を発行いたします。</p></div>
+        <div class="faq-a" id="faq-a-3"><p>はい。領収書はご希望いただいた方に、メールでお送りしております。<a href="https://edfuture.jp/contact-page/" target="_blank" rel="noopener noreferrer" class="faq-a__link">お問い合わせ先<svg class="faq-a__ext" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3zm5 16H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2z"/></svg></a>からお気軽にお申し付けください。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4">
           <span>寄付は税金の控除の対象になりますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>現時点では、EdFutureはまだ認定NPO法人ではないため、寄付金は税制上の控除の対象にはなりません。いま私たちは、寄付者の税金が控除される「認定NPO法人」を目指して活動しています。その認定には、寄付者が毎年100人いることが条件のひとつになります。つまり、いまFounding Partnersになっていただくことは、若者の挑戦だけでなく、控除を実現しようとするEdFuture自身の挑戦を後押しする応援にもなります。</p></div>
+        <div class="faq-a" id="faq-a-4"><p>現時点では、EdFutureはまだ認定NPO法人ではないため、寄付金は税制上の控除の対象にはなりません。いま私たちは、寄付者の税金が控除される「認定NPO法人」を目指して活動しています。その認定には、寄付者が毎年100人いることが条件のひとつになります。つまり、いまFounding Partnersになっていただくことは、学生の挑戦だけでなく、控除を実現しようとするEdFuture自身の挑戦を後押しする応援にもなります。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-5">
           <span>月額1,000円でも意味がありますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>もちろんです。100人が月1,000円を継続することで、年間120万円の安定した支援基盤となります。小さな一歩が、大きな挑戦を生みます。</p></div>
+        <div class="faq-a" id="faq-a-5"><p>もちろんです。100人が月1,000円を継続することで、年間120万円の安定した支援基盤となります。小さな一歩が、大きな挑戦を生みます。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-6">
           <span>寄付金はどのように使われますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>いただいた寄付は100%をプログラム活動費（奨学金・渡航費補助・学習支援）に充てています。詳細は年次活動報告書でご確認いただけます。</p></div>
+        <div class="faq-a" id="faq-a-6"><p>いただいた寄付は100%をプログラム活動費（奨学金・渡航費補助・学習支援）に充てています。詳細は年次活動報告書でご確認いただけます。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-7">
           <span>活動の様子を知ることはできますか？</span>
           <span class="faq-icon">＋</span>
         </button>
-        <div class="faq-a"><p>ニュースレターや活動報告、イベントを通じて、参加者やプログラムの様子をお届けします。Founding Partners限定のSlackコミュニティでもリアルタイムで情報を共有しています。</p></div>
+        <div class="faq-a" id="faq-a-7"><p>ニュースレターや活動報告、イベントを通じて、参加者やプログラムの様子をお届けします。Founding Partners限定のSlackコミュニティでもリアルタイムで情報を共有しています。</p></div>
       </div>
     </div>
   </section>
@@ -678,14 +745,17 @@
     <div class="final-cta__frame" aria-hidden="true"></div>
     <div class="final-cta__content js-reveal">
       <h2 class="final-cta__title"><span>世界を広げる一歩を、</span><span>一緒につくりませんか？</span></h2>
-      <div class="final-cta__glow" aria-hidden="true"></div>
-      <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="final-cta__btn">
-        <span class="final-cta__btn-badge">\ Founding Partners 100 /</span>
-        <span class="final-cta__btn-text"><span class="final-cta__btn-num">39</span>/<span class="final-cta__btn-num-total">100</span>人目の仲間になる</span>
-      </a>
+      <div class="final-cta__btn-wrap">
+        <div class="final-cta__glow" aria-hidden="true"></div>
+        <a href="https://congrant.com/project/edfuture2022/12946/form/step1" target="_blank" rel="noopener noreferrer" class="final-cta__btn">
+          <span class="final-cta__btn-badge">\ Founding Partners 100 /</span>
+          <span class="final-cta__btn-text"><span class="final-cta__btn-num">98</span>/<span class="final-cta__btn-num-total">100</span>人目の仲間になる</span>
+        </a>
+      </div>
     </div>
   </section>
 
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -694,7 +764,7 @@
         <img src="images/rogo_192.webp" alt="EdFuture ロゴ" class="footer-logo" loading="lazy" decoding="async">
         <div class="footer-brand">NPO法人 EdFuture</div>
       </div>
-      <p class="footer-tagline">すべての若者に、挑戦できる機会を。</p>
+      <p class="footer-tagline">すべての学生に、挑戦できる機会を。</p>
     </div>
     <div class="social-links">
       <a href="https://www.facebook.com/profile.php?id=100063545013511" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -747,6 +817,30 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=20260731c" defer></script>
+
+  <!-- CTA クリック計測（GA4カスタムイベント cta_click） -->
+  <script>
+    (function () {
+      // 設置場所ごとにCTAボタンを定義（全ボタン同一URLのため location で区別）
+      var ctas = [
+        { selector: '.fv__btn',        location: 'fv' },
+        { selector: '.mid-cta__btn',   location: 'mid' },
+        { selector: '.final-cta__btn', location: 'final' }
+      ];
+      ctas.forEach(function (cta) {
+        var el = document.querySelector(cta.selector);
+        if (!el) return;
+        el.addEventListener('click', function () {
+          if (typeof gtag !== 'function') return;
+          gtag('event', 'cta_click', {
+            cta_location: cta.location,
+            cta_label: (el.textContent || '').trim().replace(/\s+/g, ' '),
+            link_url: el.getAttribute('href')
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

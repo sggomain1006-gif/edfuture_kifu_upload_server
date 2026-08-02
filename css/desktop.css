@@ -44,34 +44,36 @@ body {
 }
 
 /* ---- S8 代表: 左右分割（説明文=左／写真=右・縦全幅）レイアウト ---- */
-.founder-section { margin-top: 0; } /* section-head非表示化に伴う詰め上げを打ち消す */
-.founder-section .section-head { display: none; } /* 見出しはカード内に移設。背景色を founder-section 単色に統一 */
-.founder-card__title-pc {
-  display: block;
-  font-family: var(--ff-serif);
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--c-accent);
-  margin-bottom: 24px;
-}
+.founder-section { margin-top: 0; } /* SP用の-32px重ねをPCでは打ち消す */
 .founder-card {
   display: flex;
-  align-items: stretch;
-  min-height: 760px;
+  align-items: flex-start;
+  min-height: 660px; /* 写真550px+上下マージン＝約630pxに合わせ、見出し無しの本文でも下部余白を出さない */
   width: 100%;
-  margin-left: -140px;
+  /* カードを中央幅に収めて中央寄せ。旧実装は負マージンの頭打ち(-110px)と
+     本文padding-left:var(--px)が噛み合わず、ワイド画面で本文と写真が右へドリフト
+     していた。max-width中央寄せ＋固定インセットで全幅バランスを均衡化（2026-07-14） */
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .founder-card__photo-wrap {
   order: 2;
   flex: 1 1 0;
-  height: auto;
-  margin: 40px 48px 40px 0;
+  position: relative;
+  aspect-ratio: auto;
+  height: 550px;
+  margin: 72px 48px 8px 0;
   border-radius: 24px;
   overflow: hidden;
 }
 .founder-card__photo {
-  object-position: center 22%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 35% center; /* 被写体をフレーム内で右寄りに（xを下げるほど右へ寄る） */
   transform: none;
   filter: brightness(1.05);
 }
@@ -80,12 +82,11 @@ body {
   order: 1;
   position: static;
   flex: 1 1 0;
-  padding: 72px 56px 72px var(--px);
+  padding: 72px 56px 72px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.founder-card__msg-br { display: inline; }
 .founder-card__meta {
   display: block;
   margin: 0 0 28px;
@@ -96,6 +97,23 @@ body {
   backdrop-filter: none;
 }
 .founder-card__career { margin-left: 0; }
+
+/* ---- 代表・COO(PC)とも本文まわりを比率そのままで拡大（約1.24倍） ---- */
+.founder-section .founder-card__role { font-size: 15px; }        /* 12 → 15 */
+.founder-section .founder-card__name { font-size: 35px; }        /* 28 → 35 */
+.founder-section .founder-card__career li { font-size: 16px; }   /* 13 → 16 */
+.founder-section .founder-card__message p { font-size: 17px; }   /* 14 → 17 */
+/* 写真高さは既定(550px)のまま。拡大した本文が写真からはみ出さないよう上下パディングを詰める */
+#founder .founder-card__content { padding-top: 34px; padding-bottom: 34px; }
+
+/* ---- セクション見出し: 代表＋COOの2枚を束ねる頭。PCは大きめに ---- */
+.voices-head { padding-top: 80px; padding-bottom: 8px; }
+.voices-title { font-size: 34px; }
+
+/* ---- S8-b COO: PCは代表と左右反転（写真=左／本文=右）で交互配置＝別人物を明示・単調さ解消 ---- */
+.coo-section .founder-card__photo-wrap { order: 1; margin: 72px 0 8px 48px; }
+.coo-section .founder-card__content { order: 2; padding: 72px 48px 72px 56px; }
+.coo-section .founder-card__photo { object-position: 50% center; } /* COOも被写体を右寄りに */
 
 /* ---- S5.5 課題: 3カード横並び（高さ揃え・出典を下端に固定） ---- */
 .issue-cards {
@@ -122,7 +140,6 @@ body {
 .benefits-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
   align-items: start;
 }
 .testimonials-section {
@@ -201,8 +218,10 @@ body {
   padding-bottom: 48px;
 }
 .benefits-section .section-title {
-  font-size: 44px;
+  font-size: 38px;
 }
+.benefits-title__pc { display: inline; }
+.benefits-title__sp { display: none; }
 .benefits-list {
   width: min(960px, calc(100% - 64px));
   margin: 0 auto;
@@ -264,10 +283,17 @@ body {
 }
 .voices-track {
   gap: 22px;
+  /* 上の写真グリッド(.story-photos)が全幅のため、カルーセルも --px(280px)の
+     大きな左右余白をやめて全幅に揃える（左側の白余白を解消） */
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: 32px;
 }
 .voice-card {
   flex-basis: 336px;
+  /* PCは全幅カルーセル＝左寄せ送り。スナップ基準もleftに合わせ、
+     中央スナップ(SP用)がJSの左寄せ位置を引き戻して初回移動が半分になるのを防ぐ */
+  scroll-snap-align: start;
 }
 .voice-card__photo {
   height: 246px;
@@ -288,6 +314,7 @@ body {
 .number-card { padding: 28px 18px; }
 .number-card__val { font-size: 42px; }
 .number-card__val span { font-size: 21px; }
+.number-card__unit--wide { display: inline; }
 .number-card__label {
   font-size: 14px;
   margin-top: 10px;
@@ -345,11 +372,9 @@ body {
   word-break: keep-all;
   overflow-wrap: break-word;
 }
-.cycle-caption__lead span {
-  display: block;
+.cycle-caption__lead .u-nowrap-word {
+  white-space: nowrap;
 }
-.roadmap-lead { padding: 22px 40px; }
-
 /* ---- フッター: 他セクションに合わせて全体を拡大 ---- */
 footer { padding-top: 72px; }
 .footer-brandzone { gap: 16px; margin-bottom: 32px; }
@@ -412,7 +437,7 @@ footer { padding-top: 72px; }
 .program-hero { padding-top: 608px; }
 .program-hero__bg,
 .program-hero__overlay { height: 600px; }
-.program-hero__bg { background-size: cover; background-position: center; }
+.program-hero__bg { background-image: url('../images/DSC_4186.webp'); background-size: cover; background-position: center; }
 .program-hero__heading { top: 420px; }
 .program-hero__title { font-size: 40px; }
 .program-hero__lead,
@@ -420,7 +445,12 @@ footer { padding-top: 72px; }
 
 /* ---- S10 支援ティア: 3カラムで比較しやすく ---- */
 .impact-section { padding-bottom: 44px; }
-.impact-hero { height: 460px; }
+.impact-hero { height: 480px; }
+.impact-hero__img {
+  object-position: left 22%;
+  transform: scale(1.07);
+  transform-origin: left center;
+}
 .impact-hero__text { bottom: 44px; }
 .impact-hero__label {
   font-size: 14px;
@@ -468,6 +498,10 @@ footer { padding-top: 72px; }
   font-size: 15px;
   margin-top: 14px;
 }
+.impact-tier__note {
+  font-size: 12px;
+  margin-top: 10px;
+}
 
 /* ---- S15 FAQ: 質問文をやや大きく ---- */
 .faq-section .section-title { font-size: 38px; }
@@ -483,9 +517,10 @@ footer { padding-top: 72px; }
 /* ---- S17 最終CTA: 背景写真の縦幅を拡大・位置調整・見出し拡大 ---- */
 .final-cta { min-height: 100vh; }
 .final-cta__bg-img { object-position: center 22%; }
+.final-cta__content { gap: 56px; }
 .final-cta__title { font-size: 44px; line-height: 1.7; }
 .final-cta__title::before { width: 68px; }
-.final-cta__btn { bottom: 110px; max-width: 420px; padding: 26px 40px 33px; }
+.final-cta__btn { max-width: 420px; padding: 26px 40px 33px; }
 .final-cta__btn-badge { font-size: 13px; }
 .final-cta__btn-text { font-size: 23px; }
 
@@ -518,6 +553,10 @@ footer { padding-top: 72px; }
   border: 2px solid var(--c-accent);
 }
 .roadmap-highlight__text { font-size: 17px; white-space: nowrap; }
+/* 768〜1023pxではnowrapの1行が枠幅を超えて文末が切れるため自然折返しに（1024px以上は不変） */
+@media (max-width: 1023px) {
+  .roadmap-highlight__text { white-space: normal; }
+}
 
 /* ---- S11 中間CTA: ボタンを少し大きく ---- */
 .mid-cta__btn {

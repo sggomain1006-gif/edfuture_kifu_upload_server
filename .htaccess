@@ -36,3 +36,9 @@
 <FilesMatch "\.(md|sh|py|json|lock)$">
   Require all denied
 </FilesMatch>
+
+# --- 隠しファイル/ディレクトリ (.git / .DS_Store / .gitignore 等) を404に ---
+# 万一アップロード対象に混入してもソース・履歴の漏洩を防ぐ（.well-knownは除外）
+<IfModule mod_alias.c>
+  RedirectMatch 404 "/\.(?!well-known)"
+</IfModule>
